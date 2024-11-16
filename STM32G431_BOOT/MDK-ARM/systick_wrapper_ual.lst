@@ -1,0 +1,156 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ;/******************************************************
+                       **********************
+    2 00000000         ;*  Copyright 2022 Gorgon Meducer (Email:embedded_zhuora
+                       n@hotmail.com)       *
+    3 00000000         ;*                                                      
+                                            *
+    4 00000000         ;*  Licensed under the Apache License, Version 2.0 (the 
+                       "License");          *
+    5 00000000         ;*  you may not use this file except in compliance with 
+                       the License.         *
+    6 00000000         ;*  You may obtain a copy of the License at             
+                                            *
+    7 00000000         ;*                                                      
+                                            *
+    8 00000000         ;*     http://www.apache.org/licenses/LICENSE-2.0       
+                                            *
+    9 00000000         ;*                                                      
+                                            *
+   10 00000000         ;*  Unless required by applicable law or agreed to in wr
+                       iting, software      *
+   11 00000000         ;*  distributed under the License is distributed on an "
+                       AS IS" BASIS,        *
+   12 00000000         ;*  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+                        express or implied. *
+   13 00000000         ;*  See the License for the specific language governing 
+                       permissions and      *
+   14 00000000         ;*  limitations under the License.                      
+                                            *
+   15 00000000         ;*                                                      
+                                            *
+   16 00000000         ;*******************************************************
+                       *********************/
+   17 00000000         
+   18 00000000         
+   19 00000000                 PRESERVE8
+   20 00000000                 THUMB
+   21 00000000                 AREA             |.text|, CODE, READONLY
+   22 00000000         
+   23 00000000         |$Sub$$SysTick_Handler|
+                               PROC
+   24 00000000                 EXPORT           |$Sub$$SysTick_Handler|
+   25 00000000                 IMPORT           user_code_insert_to_systick_han
+dler
+   26 00000000                 IMPORT           |$Super$$SysTick_Handler|
+   27 00000000 B430            push             {r4, r5}
+   28 00000002 B510            push             {r4, lr}
+   29 00000004 4803            LDR              R0, =user_code_insert_to_systic
+k_handler
+   30 00000006 4780            BLX              R0
+   31 00000008 BC30            pop              {r4, r5}
+   32 0000000A 46AE            mov              lr, r5
+   33 0000000C BC30            pop              {r4, r5}
+   34 0000000E 4802            LDR              R0, =|$Super$$SysTick_Handler|
+   35 00000010 4700            BX               R0
+   36 00000012                 ENDP
+   37 00000012         
+   38 00000012 00 00           ALIGN
+   39 00000014 00000000 
+              00000000         AREA             |.text|, CODE, READONLY
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+   40 0000001C         
+   41 0000001C         __ensure_systick_wrapper
+                               PROC
+   42 0000001C                 EXPORT           __ensure_systick_wrapper
+   43 0000001C BF00            NOP
+   44 0000001E 4770            BX               LR
+   45 00000020                 ENDP
+   46 00000020         
+   47 00000020                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp.sp --apcs=
+interwork --depend=stm32g431cbboot\systick_wrapper_ual.d -ostm32g431cbboot\syst
+ick_wrapper_ual.o -I.\RTE\Boot -I.\RTE\_STM32G431CBBoot -IC:\Users\PHDZ-2004\Ap
+pData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include -IC:\Users\PHDZ-2004\A
+ppData\Local\Arm\Packs\GorgonMeducer\PLOOC\4.6.3 -IC:\Users\PHDZ-2004\AppData\L
+ocal\Arm\Packs\GorgonMeducer\perf_counter\2.2.2-dev\lib -IC:\Users\PHDZ-2004\Ap
+pData\Local\Arm\Packs\Keil\STM32G4xx_DFP\1.4.0\Drivers\CMSIS\Device\ST\STM32G4x
+x\Include -IC:\Users\PHDZ-2004\AppData\Local\Arm\Packs\kk\wboot\0.9.1\source --
+predefine="__UVISION_VERSION SETA 533" --predefine="_RTE_ SETA 1" --predefine="
+STM32G431xx SETA 1" --predefine="_RTE_ SETA 1" --list=systick_wrapper_ual.lst C
+:\Users\PHDZ-2004\AppData\Local\Arm\Packs\GorgonMeducer\perf_counter\2.2.2-dev\
+systick_wrapper_ual.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+$Sub$$SysTick_Handler 00000000
+
+Symbol: $Sub$$SysTick_Handler
+   Definitions
+      At line 23 in file C:\Users\PHDZ-2004\AppData\Local\Arm\Packs\GorgonMeduc
+er\perf_counter\2.2.2-dev\systick_wrapper_ual.s
+   Uses
+      At line 24 in file C:\Users\PHDZ-2004\AppData\Local\Arm\Packs\GorgonMeduc
+er\perf_counter\2.2.2-dev\systick_wrapper_ual.s
+Comment: $Sub$$SysTick_Handler used once
+.text 00000000
+
+Symbol: .text
+   Definitions
+      At line 21 in file C:\Users\PHDZ-2004\AppData\Local\Arm\Packs\GorgonMeduc
+er\perf_counter\2.2.2-dev\systick_wrapper_ual.s
+   Uses
+      None
+Comment: .text unused
+__ensure_systick_wrapper 0000001C
+
+Symbol: __ensure_systick_wrapper
+   Definitions
+      At line 41 in file C:\Users\PHDZ-2004\AppData\Local\Arm\Packs\GorgonMeduc
+er\perf_counter\2.2.2-dev\systick_wrapper_ual.s
+   Uses
+      At line 42 in file C:\Users\PHDZ-2004\AppData\Local\Arm\Packs\GorgonMeduc
+er\perf_counter\2.2.2-dev\systick_wrapper_ual.s
+Comment: __ensure_systick_wrapper used once
+3 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+External symbols
+
+$Super$$SysTick_Handler 00000000
+
+Symbol: $Super$$SysTick_Handler
+   Definitions
+      At line 26 in file C:\Users\PHDZ-2004\AppData\Local\Arm\Packs\GorgonMeduc
+er\perf_counter\2.2.2-dev\systick_wrapper_ual.s
+   Uses
+      At line 34 in file C:\Users\PHDZ-2004\AppData\Local\Arm\Packs\GorgonMeduc
+er\perf_counter\2.2.2-dev\systick_wrapper_ual.s
+Comment: $Super$$SysTick_Handler used once
+user_code_insert_to_systick_handler 00000000
+
+Symbol: user_code_insert_to_systick_handler
+   Definitions
+      At line 25 in file C:\Users\PHDZ-2004\AppData\Local\Arm\Packs\GorgonMeduc
+er\perf_counter\2.2.2-dev\systick_wrapper_ual.s
+   Uses
+      At line 29 in file C:\Users\PHDZ-2004\AppData\Local\Arm\Packs\GorgonMeduc
+er\perf_counter\2.2.2-dev\systick_wrapper_ual.s
+Comment: user_code_insert_to_systick_handler used once
+2 symbols
+341 symbols in table
