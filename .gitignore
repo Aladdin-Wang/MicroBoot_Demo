@@ -11,6 +11,7 @@
 *.ilk
 *.map
 *.exp
+*.htm
 
 # Precompiled Headers
 *.gch
@@ -50,3 +51,4 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+.uvguix.kk
