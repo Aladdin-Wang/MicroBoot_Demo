@@ -18,6 +18,8 @@
 /* ARM::CMSIS-Compiler:STDOUT:Custom@1.1.0 */
 #define RTE_CMSIS_Compiler_STDOUT                /* CMSIS-Compiler STDOUT */
 #define RTE_CMSIS_Compiler_STDOUT_Custom         /* CMSIS-Compiler STDOUT: Custom */
+/* GorgonMeducer::Utilities:perf_counter:Core&Source@2.3.3 */
+#define __PERF_COUNTER__ 1
 
 
 #endif /* RTE_COMPONENTS_H */

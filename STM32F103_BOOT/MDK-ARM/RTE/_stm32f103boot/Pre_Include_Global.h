@@ -9,6 +9,8 @@
 #ifndef PRE_INCLUDE_GLOBAL_H
 #define PRE_INCLUDE_GLOBAL_H
 
+/* GorgonMeducer::Utilities:perf_counter:Core&Source@2.3.3 */
+#define __PERF_COUNTER_CFG_USE_SYSTICK_WRAPPER__ 1
 /* kk::MicroBoot:components:Bootloader@0.9.6 */
 #define __USER_APP_CFG_H__ "user_app_cfg.h"
 /* kk::MicroBoot:components:FlashDrv&STM32@0.9.6 */
