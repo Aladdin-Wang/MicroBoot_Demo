@@ -15,9 +15,9 @@
  */
 #define CMSIS_device_header "stm32f10x.h"
 
-/* Keil::Compiler&ARM Compiler:I/O:STDOUT&User@1.2.0 */
-#define RTE_Compiler_IO_STDOUT          /* Compiler I/O: STDOUT */
-#define RTE_Compiler_IO_STDOUT_User     /* Compiler I/O: STDOUT User */
+/* ARM::CMSIS-Compiler:STDOUT:Custom@1.1.0 */
+#define RTE_CMSIS_Compiler_STDOUT                /* CMSIS-Compiler STDOUT */
+#define RTE_CMSIS_Compiler_STDOUT_Custom         /* CMSIS-Compiler STDOUT: Custom */
 
 
 #endif /* RTE_COMPONENTS_H */

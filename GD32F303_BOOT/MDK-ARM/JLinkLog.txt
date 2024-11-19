@@ -1,0 +1,77 @@
+T2168 000:591.995   SEGGER J-Link V7.92k Log File
+T2168 000:592.253   DLL Compiled: Oct 18 2023 14:58:31
+T2168 000:592.284   Logging started @ 2024-09-23 13:07
+T2168 000:592.316   Process: D:\Keil_v5\UV4\UV4.exe
+T2168 000:592.353 - 592.344ms
+T2168 000:592.393 JLINK_SetWarnOutHandler(...)
+T2168 000:592.426 - 0.036ms
+T2168 000:592.465 JLINK_OpenEx(...)
+T2168 000:594.154   Firmware: J-Link ARM-OB STM32 compiled Aug 22 2012 19:52:04
+T2168 000:594.705   Firmware: J-Link ARM-OB STM32 compiled Aug 22 2012 19:52:04
+T2168 000:597.680   Hardware: V7.00
+T2168 000:597.735   S/N: 20090928
+T2168 000:597.777   OEM: SEGGER
+T2168 000:597.822   Feature(s): RDI,FlashDL,FlashBP,JFlash,GDBFull
+T2168 000:598.408   Bootloader: (Could not read)
+T2168 000:599.495   TELNET listener socket opened on port 19021
+T2168 000:599.666   WEBSRV WEBSRV_Init(): Starting webserver thread(s)
+T2168 000:599.874   WEBSRV Webserver running on local port 19080
+T2168 000:600.056   Looking for J-Link GUI Server exe at: D:\Keil_v5\ARM\Segger\JLinkGUIServer.exe
+T2168 000:600.203   Looking for J-Link GUI Server exe at: C:\Program Files (x86)\SEGGER\JLink_V632f\\JLinkGUIServer.exe
+T2168 000:901.358   Failed to connect to J-Link GUI Server.
+T2168 000:901.466 - 308.966ms returns "O.K."
+T2168 000:901.520 JLINK_GetEmuCaps()
+T2168 000:901.560 - 0.035ms returns 0x88EA5833
+T2168 000:901.596 JLINK_TIF_GetAvailable(...)
+T2168 000:901.893 - 0.296ms
+T2168 000:901.937 JLINK_SetErrorOutHandler(...)
+T2168 000:901.966 - 0.029ms
+T2168 000:902.043 JLINK_ExecCommand("ProjectFile = "E:\PROJECT\00-boot\GD32F303_BOOT\MDK-ARM\JLinkSettings.ini"", ...). 
+T2168 000:919.216 - 17.174ms returns 0x00
+T2168 000:919.267 JLINK_ExecCommand("Device = GD32F303RC", ...). 
+T2168 000:919.712   Device "GD32F303RC" selected.
+T2168 000:920.412 - 1.098ms returns 0x00
+T2168 000:920.455 JLINK_ExecCommand("DisableConnectionTimeout", ...). 
+T2168 000:920.495 - 0.004ms returns 0x01
+T2168 000:920.529 JLINK_GetHardwareVersion()
+T2168 000:920.558 - 0.029ms returns 70000
+T2168 000:920.604 JLINK_GetDLLVersion()
+T2168 000:920.634 - 0.029ms returns 79211
+T2168 000:920.667 JLINK_GetOEMString(...)
+T2168 000:920.699 JLINK_GetFirmwareString(...)
+T2168 000:920.731 - 0.031ms
+T2168 000:920.771 JLINK_GetDLLVersion()
+T2168 000:920.801 - 0.029ms returns 79211
+T2168 000:920.834 JLINK_GetCompileDateTime()
+T2168 000:920.862 - 0.028ms
+T2168 000:920.898 JLINK_GetFirmwareString(...)
+T2168 000:920.928 - 0.029ms
+T2168 000:920.962 JLINK_GetHardwareVersion()
+T2168 000:920.992 - 0.029ms returns 70000
+T2168 000:921.027 JLINK_GetSN()
+T2168 000:921.057 - 0.029ms returns 20090928
+T2168 000:921.093 JLINK_GetOEMString(...)
+T2168 000:921.137 JLINK_TIF_Select(JLINKARM_TIF_SWD)
+T2168 000:921.946 - 0.808ms returns 0x00
+T2168 000:921.992 JLINK_HasError()
+T2168 000:922.059 JLINK_SetSpeed(3000)
+T2168 000:922.268 - 0.208ms
+T2168 000:922.847 JLINK_HasError()
+T2168 000:922.892 JLINK_SetResetType(JLINKARM_RESET_TYPE_NORMAL)
+T2168 000:922.922 - 0.029ms returns JLINKARM_RESET_TYPE_NORMAL
+T2168 000:922.953 JLINK_Reset()
+T2168 001:027.997   Failed to attach to CPU. Trying connect under reset.
+T2168 001:450.943   Connect fallback: Reset via Reset pin & Connect.
+T2168 001:615.437 - 692.481ms
+T2168 001:615.527 JLINK_GetId()
+T2168 001:722.155   Connect fallback: Reset via Reset pin & Connect.
+T2168 001:885.682 - 270.152ms returns 0x00000000
+T2168 001:885.801 JLINK_GetId()
+T2168 001:992.404   Connect fallback: Reset via Reset pin & Connect.
+T2168 002:155.994 - 270.190ms returns 0x00000000
+T2168 002:166.622 JLINK_GetFirmwareString(...)
+T2168 002:166.718 - 0.097ms
+T2168 007:335.332 JLINK_Close()
+T2168 007:339.471 - 4.139ms
+T2168 007:339.512   
+T2168 007:339.533   Closed

@@ -84,7 +84,7 @@ uint16_t shell_read_data(wl_shell_t *ptObj, char *pchBuffer, uint16_t hwSize)
 
 uint16_t shell_write_data(wl_shell_t *ptObj, const char *pchBuffer, uint16_t hwSize)
 {
-	HAL_UART_Transmit(&huart1, (uint8_t *)pchBuffer, hwSize, 100);
+	HAL_UART_Transmit(&huart5, (uint8_t *)pchBuffer, hwSize, 100);
 	return hwSize;
 }
 /* USER CODE END 0 */
@@ -120,6 +120,7 @@ int main(void)
   MX_GPIO_Init();
   MX_USART1_UART_Init();
   MX_USART3_UART_Init();
+  MX_UART5_Init();
   /* USER CODE BEGIN 2 */
  
     queue_init(&s_tCheckUsePeekQueue, s_chBuffer, sizeof(s_chBuffer));
@@ -136,9 +137,9 @@ int main(void)
 	agent_register(&s_fsmCheckUsePeek, &s_tShellObj.tCheckAgent);
 	
     connect(&tUartMsgObj, SIGNAL(uart_sig), &s_tCheckUsePeekQueue, SLOT(enqueue_bytes));
-
 	connect(&s_tYmodemOtaReceive.tYmodemReceive, SIGNAL(ymodem_rec_sig), &huart1, SLOT(uart_sent_data));
 	connect(&s_tYmodemOtaReceive.tYmodemReceive, SIGNAL(ymodem_rec_sig), &huart3, SLOT(uart_sent_data));	
+	connect(&s_tYmodemOtaReceive.tYmodemReceive, SIGNAL(ymodem_rec_sig), &huart5, SLOT(uart_sent_data));	
   /* USER CODE END 2 */
 
   /* Infinite loop */
