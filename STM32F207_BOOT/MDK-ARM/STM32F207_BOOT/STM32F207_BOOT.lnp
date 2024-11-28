@@ -21,6 +21,7 @@
 "stm32f207_boot\stm32f2xx_hal_dma_ex.o"
 "stm32f207_boot\stm32f2xx_hal_exti.o"
 "stm32f207_boot\system_stm32f2xx.o"
+"stm32f207_boot\retarget_io.o"
 "stm32f207_boot\intelhex.o"
 "stm32f207_boot\bootloader.o"
 "stm32f207_boot\check_agent_engine.o"

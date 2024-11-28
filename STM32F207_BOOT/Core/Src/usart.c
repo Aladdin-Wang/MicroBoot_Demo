@@ -21,7 +21,7 @@
 #include "usart.h"
 
 /* USER CODE BEGIN 0 */
-
+data_msg_t  tUartMsgObj;
 /* USER CODE END 0 */
 
 UART_HandleTypeDef huart1;
@@ -51,7 +51,7 @@ void MX_USART1_UART_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN USART1_Init 2 */
-
+  HAL_UART_Receive_IT(&huart1, &tUartMsgObj.chByte, 1);
   /* USER CODE END USART1_Init 2 */
 
 }
@@ -115,5 +115,31 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 }
 
 /* USER CODE BEGIN 1 */
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{ 
+    if(huart == &huart1) {
+        emit(uart_sig, &tUartMsgObj,
+             args(
+                 &tUartMsgObj.chByte,
+                 1
+             ));
+		HAL_UART_Receive_IT(huart, &tUartMsgObj.chByte, 1);
+    }
+
+}
+void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
+{
+    __HAL_UNLOCK(huart);   
+    MX_USART1_UART_Init();   	
+}
+
+void uart_sent_data(UART_HandleTypeDef *huart, uint8_t *chDate, uint16_t hwLen)
+{
+    if(huart == &huart1) {		
+	      //HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, GPIO_PIN_SET);
+           HAL_UART_Transmit(&huart1, chDate, hwLen, 100);
+	     // HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, GPIO_PIN_RESET);
+    }		
+}
 
 /* USER CODE END 1 */
