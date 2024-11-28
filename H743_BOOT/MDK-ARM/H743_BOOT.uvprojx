@@ -753,7 +753,7 @@
       <file attr="config" category="header" name="template\user_app_cfg.h" version="0.9.6">
         <instance index="0">RTE\MicroBoot\user_app_cfg.h</instance>
         <component Cclass="MicroBoot" Cgroup="components" Csub="ymodem" Cvendor="kk" Cversion="0.9.6" condition="ymodem"/>
-        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.8-dev3+g157443f"/>
+        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.8-dev18+ge37ae9f"/>
         <targetInfos>
           <targetInfo name="H743_BOOT"/>
         </targetInfos>
@@ -761,7 +761,7 @@
       <file attr="config" category="sourceC" name="example\ymodem\ymodem_ota.c" version="0.9.6">
         <instance index="0">RTE\MicroBoot\ymodem_ota.c</instance>
         <component Cclass="MicroBoot" Cgroup="example" Csub="ymodem_ota" Cvendor="kk" Cversion="0.9.6" condition="ymodem_ota"/>
-        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.8-dev3+g157443f"/>
+        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.8-dev18+ge37ae9f"/>
         <targetInfos>
           <targetInfo name="H743_BOOT"/>
         </targetInfos>
@@ -769,7 +769,7 @@
       <file attr="config" category="header" name="example\ymodem\ymodem_ota.h" version="0.9.6">
         <instance index="0">RTE\MicroBoot\ymodem_ota.h</instance>
         <component Cclass="MicroBoot" Cgroup="example" Csub="ymodem_ota" Cvendor="kk" Cversion="0.9.6" condition="ymodem_ota"/>
-        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.8-dev3+g157443f"/>
+        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.8-dev18+ge37ae9f"/>
         <targetInfos>
           <targetInfo name="H743_BOOT"/>
         </targetInfos>

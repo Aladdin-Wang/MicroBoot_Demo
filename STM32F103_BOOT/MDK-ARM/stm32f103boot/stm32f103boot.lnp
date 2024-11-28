@@ -37,6 +37,9 @@
 "stm32f103boot\flash_blob.o"
 "stm32f103boot\ring_queue.o"
 "stm32f103boot\ymodem_ota.o"
+"stm32f103boot\perf_counter.o"
+"stm32f103boot\perfc_port_default.o"
+"stm32f103boot\systick_wrapper_gnu.o"
 --library_type=microlib --strict --scatter "stm32f103boot\stm32f103boot.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
