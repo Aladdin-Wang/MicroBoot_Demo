@@ -7,7 +7,7 @@
 
   <Targets>
     <Target>
-      <TargetName>H743_BOOT</TargetName>
+      <TargetName>STM32F7_BOOT</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <pArmCC>6220000::V6.22::ARMCLANG</pArmCC>
@@ -15,11 +15,11 @@
       <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
-          <Device>STM32H743IITx</Device>
+          <Device>STM32F767IGTx</Device>
           <Vendor>STMicroelectronics</Vendor>
-          <PackID>Keil.STM32H7xx_DFP.4.0.0</PackID>
+          <PackID>Keil.STM32F7xx_DFP.3.0.0</PackID>
           <PackURL>https://www.keil.com/pack/</PackURL>
-          <Cpu>IRAM(0x20000000-0x2001FFFF) IRAM2(0x24000000-0x2407FFFF) IROM(0x8000000-0x81FFFFF) CLOCK(12000000) FPU3(DFPU) CPUTYPE("Cortex-M7") ELITTLE TZ</Cpu>
+          <Cpu>IRAM(0x20000000-0x2007FFFF) IROM(0x8000000-0x80FFFFF) CLOCK(12000000) FPU3(DFPU) CPUTYPE("Cortex-M7") ELITTLE TZ</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
           <FlashDriverDll></FlashDriverDll>
@@ -34,7 +34,7 @@
           <SLE66CMisc></SLE66CMisc>
           <SLE66AMisc></SLE66AMisc>
           <SLE66LinkerMisc></SLE66LinkerMisc>
-          <SFDFile>$$Device:STM32H743IITx$CMSIS\SVD\STM32H743.svd</SFDFile>
+          <SFDFile>$$Device:STM32F767IGTx$CMSIS\SVD\STM32F767.svd</SFDFile>
           <bCustSvd>0</bCustSvd>
           <UseEnv>0</UseEnv>
           <BinPath></BinPath>
@@ -49,8 +49,8 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>H743_BOOT\</OutputDirectory>
-          <OutputName>H743_BOOT</OutputName>
+          <OutputDirectory>STM32F7_BOOT\</OutputDirectory>
+          <OutputName>STM32F7_BOOT</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -139,7 +139,7 @@
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2V8M.DLL</Flash2>
-          <Flash3>"" ()</Flash3>
+          <Flash3></Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -188,7 +188,7 @@
             <RvdsMve>0</RvdsMve>
             <RvdsCdeCp>0</RvdsCdeCp>
             <nBranchProt>0</nBranchProt>
-            <hadIRAM2>1</hadIRAM2>
+            <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
             <useUlib>1</useUlib>
@@ -212,8 +212,8 @@
             <Ra1Chk>0</Ra1Chk>
             <Ra2Chk>0</Ra2Chk>
             <Ra3Chk>0</Ra3Chk>
-            <Im1Chk>0</Im1Chk>
-            <Im2Chk>1</Im2Chk>
+            <Im1Chk>1</Im1Chk>
+            <Im2Chk>0</Im2Chk>
             <OnChipMemories>
               <Ocm1>
                 <Type>0</Type>
@@ -248,12 +248,12 @@
               <IRAM>
                 <Type>0</Type>
                 <StartAddress>0x20000000</StartAddress>
-                <Size>0x20000</Size>
+                <Size>0x80000</Size>
               </IRAM>
               <IROM>
                 <Type>1</Type>
                 <StartAddress>0x8000000</StartAddress>
-                <Size>0x200000</Size>
+                <Size>0x100000</Size>
               </IROM>
               <XRAM>
                 <Type>0</Type>
@@ -278,7 +278,7 @@
               <OCR_RVCT4>
                 <Type>1</Type>
                 <StartAddress>0x8000000</StartAddress>
-                <Size>0x200000</Size>
+                <Size>0x100000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
                 <Type>1</Type>
@@ -303,12 +303,12 @@
               <OCR_RVCT9>
                 <Type>0</Type>
                 <StartAddress>0x20000000</StartAddress>
-                <Size>0x20000</Size>
+                <Size>0x80000</Size>
               </OCR_RVCT9>
               <OCR_RVCT10>
                 <Type>0</Type>
-                <StartAddress>0x24000000</StartAddress>
-                <Size>0x80000</Size>
+                <StartAddress>0x0</StartAddress>
+                <Size>0x0</Size>
               </OCR_RVCT10>
             </OnChipMemories>
             <RvctStartVector></RvctStartVector>
@@ -328,7 +328,7 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
-            <uGnu>1</uGnu>
+            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>6</v6Lang>
             <v6LangP>3</v6LangP>
@@ -338,10 +338,10 @@
             <v6WtE>0</v6WtE>
             <v6Rtti>0</v6Rtti>
             <VariousControls>
-              <MiscControls>-Wno-invalid-source-encoding</MiscControls>
-              <Define>USE_HAL_DRIVER,STM32H743xx FLASH_MEM STM32H7x_2048,STM32H743xx</Define>
+              <MiscControls></MiscControls>
+              <Define>USE_HAL_DRIVER,STM32F767xx,STM32F7x_1024</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32H7xx/Include;../Drivers/CMSIS/Include;../App;../Serve;..\RTT</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F7xx_HAL_Driver/Inc;../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F7xx/Include;../Drivers/CMSIS/Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -386,9 +386,9 @@
           <GroupName>Application/MDK-ARM</GroupName>
           <Files>
             <File>
-              <FileName>startup_stm32h743xx.s</FileName>
+              <FileName>startup_stm32f767xx.s</FileName>
               <FileType>2</FileType>
-              <FilePath>startup_stm32h743xx.s</FilePath>
+              <FilePath>startup_stm32f767xx.s</FilePath>
             </File>
           </Files>
         </Group>
@@ -411,119 +411,114 @@
               <FilePath>../Core/Src/usart.c</FilePath>
             </File>
             <File>
-              <FileName>stm32h7xx_it.c</FileName>
+              <FileName>stm32f7xx_it.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Core/Src/stm32h7xx_it.c</FilePath>
+              <FilePath>../Core/Src/stm32f7xx_it.c</FilePath>
             </File>
             <File>
-              <FileName>stm32h7xx_hal_msp.c</FileName>
+              <FileName>stm32f7xx_hal_msp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Core/Src/stm32h7xx_hal_msp.c</FilePath>
+              <FilePath>../Core/Src/stm32f7xx_hal_msp.c</FilePath>
+            </File>
+            <File>
+              <FileName>STM32F7x_1024.FLM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\STM32F7x_1024.FLM.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>Drivers/STM32H7xx_HAL_Driver</GroupName>
+          <GroupName>Drivers/STM32F7xx_HAL_Driver</GroupName>
           <Files>
             <File>
-              <FileName>stm32h7xx_hal_cortex.c</FileName>
+              <FileName>stm32f7xx_hal_cortex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c</FilePath>
+              <FilePath>../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.c</FilePath>
             </File>
             <File>
-              <FileName>stm32h7xx_hal_rcc.c</FileName>
+              <FileName>stm32f7xx_hal_tim.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c</FilePath>
+              <FilePath>../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim.c</FilePath>
             </File>
             <File>
-              <FileName>stm32h7xx_hal_rcc_ex.c</FileName>
+              <FileName>stm32f7xx_hal_tim_ex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c</FilePath>
+              <FilePath>../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim_ex.c</FilePath>
             </File>
             <File>
-              <FileName>stm32h7xx_hal_flash.c</FileName>
+              <FileName>stm32f7xx_hal_uart.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.c</FilePath>
+              <FilePath>../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_uart.c</FilePath>
             </File>
             <File>
-              <FileName>stm32h7xx_hal_flash_ex.c</FileName>
+              <FileName>stm32f7xx_hal_uart_ex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash_ex.c</FilePath>
+              <FilePath>../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_uart_ex.c</FilePath>
             </File>
             <File>
-              <FileName>stm32h7xx_hal_gpio.c</FileName>
+              <FileName>stm32f7xx_hal_rcc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c</FilePath>
+              <FilePath>../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc.c</FilePath>
             </File>
             <File>
-              <FileName>stm32h7xx_hal_hsem.c</FileName>
+              <FileName>stm32f7xx_hal_rcc_ex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c</FilePath>
+              <FilePath>../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc_ex.c</FilePath>
             </File>
             <File>
-              <FileName>stm32h7xx_hal_dma.c</FileName>
+              <FileName>stm32f7xx_hal_flash.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c</FilePath>
+              <FilePath>../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_flash.c</FilePath>
             </File>
             <File>
-              <FileName>stm32h7xx_hal_dma_ex.c</FileName>
+              <FileName>stm32f7xx_hal_flash_ex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.c</FilePath>
+              <FilePath>../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_flash_ex.c</FilePath>
             </File>
             <File>
-              <FileName>stm32h7xx_hal_mdma.c</FileName>
+              <FileName>stm32f7xx_hal_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_mdma.c</FilePath>
+              <FilePath>../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_gpio.c</FilePath>
             </File>
             <File>
-              <FileName>stm32h7xx_hal_pwr.c</FileName>
+              <FileName>stm32f7xx_hal_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.c</FilePath>
+              <FilePath>../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma.c</FilePath>
             </File>
             <File>
-              <FileName>stm32h7xx_hal_pwr_ex.c</FileName>
+              <FileName>stm32f7xx_hal_dma_ex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c</FilePath>
+              <FilePath>../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma_ex.c</FilePath>
             </File>
             <File>
-              <FileName>stm32h7xx_hal.c</FileName>
+              <FileName>stm32f7xx_hal_pwr.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c</FilePath>
+              <FilePath>../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr.c</FilePath>
             </File>
             <File>
-              <FileName>stm32h7xx_hal_i2c.c</FileName>
+              <FileName>stm32f7xx_hal_pwr_ex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c.c</FilePath>
+              <FilePath>../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr_ex.c</FilePath>
             </File>
             <File>
-              <FileName>stm32h7xx_hal_i2c_ex.c</FileName>
+              <FileName>stm32f7xx_hal.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c</FilePath>
+              <FilePath>../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.c</FilePath>
             </File>
             <File>
-              <FileName>stm32h7xx_hal_exti.c</FileName>
+              <FileName>stm32f7xx_hal_i2c.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.c</FilePath>
+              <FilePath>../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c.c</FilePath>
             </File>
             <File>
-              <FileName>stm32h7xx_hal_tim.c</FileName>
+              <FileName>stm32f7xx_hal_i2c_ex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c</FilePath>
+              <FilePath>../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c_ex.c</FilePath>
             </File>
             <File>
-              <FileName>stm32h7xx_hal_tim_ex.c</FileName>
+              <FileName>stm32f7xx_hal_exti.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32h7xx_hal_uart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32h7xx_hal_uart_ex.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c</FilePath>
+              <FilePath>../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_exti.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -531,32 +526,14 @@
           <GroupName>Drivers/CMSIS</GroupName>
           <Files>
             <File>
-              <FileName>system_stm32h7xx.c</FileName>
+              <FileName>system_stm32f7xx.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Core/Src/system_stm32h7xx.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>RTT</GroupName>
-          <Files>
-            <File>
-              <FileName>SEGGER_RTT.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\RTT\SEGGER_RTT.c</FilePath>
-            </File>
-            <File>
-              <FileName>SEGGER_RTT_printf.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\RTT\SEGGER_RTT_printf.c</FilePath>
+              <FilePath>../Core/Src/system_stm32f7xx.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>
-        </Group>
-        <Group>
-          <GroupName>::Compiler</GroupName>
         </Group>
         <Group>
           <GroupName>::MicroBoot</GroupName>
@@ -571,191 +548,79 @@
       <component Cclass="CMSIS" Cgroup="CORE" Cvendor="ARM" Cversion="6.1.0" condition="ARMv6_7_8-M Device">
         <package name="CMSIS" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="ARM" version="6.1.0"/>
         <targetInfos>
-          <targetInfo name="H743_BOOT"/>
-        </targetInfos>
-      </component>
-      <component Cbundle="ARM Compiler" Cclass="Compiler" Cgroup="I/O" Csub="STDOUT" Cvariant="User" Cvendor="Keil" Cversion="1.2.0" condition="ARMCC Cortex-M">
-        <package name="ARM_Compiler" schemaVersion="1.7.7" url="https://www.keil.com/pack/" vendor="Keil" version="1.7.2"/>
-        <targetInfos>
-          <targetInfo name="H743_BOOT"/>
+          <targetInfo name="STM32F7_BOOT"/>
         </targetInfos>
       </component>
       <component Cclass="MicroBoot" Cgroup="components" Csub="Bootloader" Cvendor="kk" Cversion="0.9.6" condition="Bootloader">
-        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.7-dev2+g743f681"/>
+        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.8-dev56+gb078887"/>
         <targetInfos>
-          <targetInfo name="H743_BOOT"/>
+          <targetInfo name="STM32F7_BOOT"/>
         </targetInfos>
       </component>
-      <component Cclass="MicroBoot" Cgroup="components" Csub="FlashDrv" Cvariant="STM32" Cvendor="kk" Cversion="0.9.6" condition="FlashDrv">
-        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.7-dev2+g743f681"/>
+      <component Cclass="MicroBoot" Cgroup="components" Csub="FlashDrv" Cvariant="None" Cvendor="kk" Cversion="0.9.6" condition="FlashDrv">
+        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.8-dev74+g4e63433"/>
         <targetInfos>
-          <targetInfo name="H743_BOOT"/>
+          <targetInfo name="STM32F7_BOOT"/>
         </targetInfos>
       </component>
       <component Cclass="MicroBoot" Cgroup="components" Csub="check_agent_engine" Cvendor="kk" Cversion="0.9.6" condition="check_agent_engine">
-        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.7-dev2+g743f681"/>
+        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.8-dev56+gb078887"/>
         <targetInfos>
-          <targetInfo name="H743_BOOT"/>
+          <targetInfo name="STM32F7_BOOT"/>
+        </targetInfos>
+      </component>
+      <component Cclass="MicroBoot" Cgroup="components" Csub="no_semihosting" Cvendor="kk" Cversion="0.9.6" condition="no_semihosting">
+        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.8-dev74+g4e63433"/>
+        <targetInfos>
+          <targetInfo name="STM32F7_BOOT"/>
         </targetInfos>
       </component>
       <component Cclass="MicroBoot" Cgroup="components" Csub="queue" Cvendor="kk" Cversion="0.9.6" condition="queue">
-        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.7-dev2+g743f681"/>
+        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.8-dev56+gb078887"/>
         <targetInfos>
-          <targetInfo name="H743_BOOT"/>
+          <targetInfo name="STM32F7_BOOT"/>
         </targetInfos>
       </component>
       <component Cclass="MicroBoot" Cgroup="components" Csub="shell" Cvendor="kk" Cversion="0.9.7" condition="shell">
-        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.8-dev7+g7be7fee"/>
+        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.8-dev56+gb078887"/>
         <targetInfos>
-          <targetInfo name="H743_BOOT"/>
+          <targetInfo name="STM32F7_BOOT"/>
         </targetInfos>
       </component>
       <component Cclass="MicroBoot" Cgroup="components" Csub="signals_slots" Cvendor="kk" Cversion="0.9.6" condition="signals_slots">
-        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.7-dev2+g743f681"/>
+        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.8-dev56+gb078887"/>
         <targetInfos>
-          <targetInfo name="H743_BOOT"/>
-        </targetInfos>
-      </component>
-      <component Cclass="MicroBoot" Cgroup="components" Csub="subscribe_publish" Cvendor="kk" Cversion="0.9.6" condition="subscribe_publish">
-        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.7-dev48+g24dfa92"/>
-        <targetInfos>
-          <targetInfo name="H743_BOOT"/>
+          <targetInfo name="STM32F7_BOOT"/>
         </targetInfos>
       </component>
       <component Cclass="MicroBoot" Cgroup="components" Csub="ymodem" Cvendor="kk" Cversion="0.9.6" condition="ymodem">
-        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.7-dev2+g743f681"/>
+        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.8-dev56+gb078887"/>
         <targetInfos>
-          <targetInfo name="H743_BOOT"/>
+          <targetInfo name="STM32F7_BOOT"/>
         </targetInfos>
       </component>
       <component Cclass="MicroBoot" Cgroup="example" Csub="ymodem_ota" Cvendor="kk" Cversion="0.9.6" condition="ymodem_ota">
-        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.7-dev2+g743f681"/>
+        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.8-dev56+gb078887"/>
         <targetInfos>
-          <targetInfo name="H743_BOOT"/>
+          <targetInfo name="STM32F7_BOOT"/>
         </targetInfos>
       </component>
     </components>
     <files>
-      <file attr="config" category="header" name="source\app_cfg.h" version="1.0.1">
-        <instance index="0" removed="1">RTE\AFrameWork\app_cfg.h</instance>
-        <component Cclass="AFrameWork" Cgroup="wali_framework" Cvendor="kk" Cversion="1.0.1"/>
-        <package name="wali_framework" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/WALI_FrameWork/" vendor="kk" version="1.0.1"/>
-        <targetInfos/>
-      </file>
-      <file attr="config" category="source" name="source\wl_serve.c" version="1.0.1">
-        <instance index="0" removed="1">RTE\AFrameWork\wl_serve.c</instance>
-        <component Cclass="AFrameWork" Cgroup="wali_framework" Cvendor="kk" Cversion="1.0.1"/>
-        <package name="wali_framework" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/WALI_FrameWork/" vendor="kk" version="1.0.1"/>
-        <targetInfos/>
-      </file>
-      <file attr="config" category="other" name="tools\README.md" version="1.2.1">
-        <instance index="0" removed="1">RTE\Acceleration\README.md</instance>
-        <component Cclass="Acceleration" Cgroup="Arm-2D" Csub="Core" Cvendor="ARM" Cversion="1.1.5" condition="CMSIS-DSP"/>
-        <package name="Arm-2D" schemaVersion="1.7.7" url="https://www.keil.com/pack/" vendor="ARM" version="1.1.5-dev107+gb349b1e"/>
-        <targetInfos/>
-      </file>
-      <file attr="config" category="sourceC" name="Library\Source\arm_2d.c" version="1.1.2">
-        <instance index="0" removed="1">RTE\Acceleration\arm_2d.c</instance>
-        <component Cclass="Acceleration" Cgroup="Arm-2D" Csub="Core" Cvendor="ARM" Cversion="1.1.5" condition="CMSIS-DSP"/>
-        <package name="Arm-2D" schemaVersion="1.7.7" url="https://www.keil.com/pack/" vendor="ARM" version="1.1.5-dev107+gb349b1e"/>
-        <targetInfos/>
-      </file>
-      <file attr="config" category="preIncludeGlobal" name="Library\Include\template\arm_2d_cfg.h" version="1.2.3">
-        <instance index="0" removed="1">RTE\Acceleration\arm_2d_cfg.h</instance>
-        <component Cclass="Acceleration" Cgroup="Arm-2D" Csub="Core" Cvendor="ARM" Cversion="1.1.5" condition="CMSIS-DSP"/>
-        <package name="Arm-2D" schemaVersion="1.7.7" url="https://www.keil.com/pack/" vendor="ARM" version="1.1.5-dev107+gb349b1e"/>
-        <targetInfos/>
-      </file>
-      <file attr="config" category="utility" name="tools\img2c.py" version="1.2.2">
-        <instance index="0" removed="1">RTE\Acceleration\img2c.py</instance>
-        <component Cclass="Acceleration" Cgroup="Arm-2D" Csub="Core" Cvendor="ARM" Cversion="1.1.5" condition="CMSIS-DSP"/>
-        <package name="Arm-2D" schemaVersion="1.7.7" url="https://www.keil.com/pack/" vendor="ARM" version="1.1.5-dev107+gb349b1e"/>
-        <targetInfos/>
-      </file>
-      <file attr="config" category="utility" name="tools\ttf2c.py" version="1.0.0">
-        <instance index="0" removed="1">RTE\Acceleration\ttf2c.py</instance>
-        <component Cclass="Acceleration" Cgroup="Arm-2D" Csub="Core" Cvendor="ARM" Cversion="1.1.5" condition="CMSIS-DSP"/>
-        <package name="Arm-2D" schemaVersion="1.7.7" url="https://www.keil.com/pack/" vendor="ARM" version="1.1.5-dev107+gb349b1e"/>
-        <targetInfos/>
-      </file>
-      <file attr="config" category="header" name="template\user_app_cfg.h" version="0.9.4">
-        <instance index="0" removed="1">RTE\BootServe\user_app_cfg.h</instance>
-        <component Cclass="BootServe" Cgroup="components" Csub="ymodem" Cvendor="kk" Cversion="0.9.4" condition="ymodem"/>
-        <package name="wboot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/wboot/" vendor="kk" version="0.9.5-dev29+g8c97eaf"/>
-        <targetInfos/>
-      </file>
-      <file attr="config" category="source" name="source\wl_serve.c" version="0.9.3">
-        <instance index="0" removed="1">RTE\BootServe\wl_serve.c</instance>
-        <component Cclass="BootServe" Cgroup="wboot" Csub="Core" Cvendor="kk" Cversion="0.9.3"/>
-        <package name="wboot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/wboot/" vendor="kk" version="0.9.4"/>
-        <targetInfos/>
-      </file>
-      <file attr="config" category="header" name="source\wl_serve.h" version="0.9.3">
-        <instance index="0" removed="1">RTE\BootServe\wl_serve.h</instance>
-        <component Cclass="BootServe" Cgroup="wboot" Csub="Core" Cvendor="kk" Cversion="0.9.3"/>
-        <package name="wboot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/wboot/" vendor="kk" version="0.9.4"/>
-        <targetInfos/>
-      </file>
-      <file attr="config" category="header" name="template\wl_user_app_cfg.h" version="0.9.4">
-        <instance index="0" removed="1">RTE\BootServe\wl_user_app_cfg.h</instance>
-        <component Cclass="BootServe" Cgroup="components" Csub="ymodem" Cvendor="kk" Cversion="0.9.4" condition="ymodem"/>
-        <package name="wboot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/wboot/" vendor="kk" version="0.9.5-dev23+gecb056d"/>
-        <targetInfos/>
-      </file>
-      <file attr="config" category="sourceC" name="example\ymodem\ymodem_ota.c" version="0.9.4">
-        <instance index="0" removed="1">RTE\BootServe\ymodem_ota.c</instance>
-        <component Cclass="BootServe" Cgroup="example" Csub="ymodem_ota" Cvendor="kk" Cversion="0.9.4" condition="ymodem_ota"/>
-        <package name="wboot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/wboot/" vendor="kk" version="0.9.5-dev29+g8c97eaf"/>
-        <targetInfos/>
-      </file>
-      <file attr="config" category="header" name="example\ymodem\ymodem_ota.h" version="0.9.4">
-        <instance index="0" removed="1">RTE\BootServe\ymodem_ota.h</instance>
-        <component Cclass="BootServe" Cgroup="example" Csub="ymodem_ota" Cvendor="kk" Cversion="0.9.4" condition="ymodem_ota"/>
-        <package name="wboot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/wboot/" vendor="kk" version="0.9.5-dev29+g8c97eaf"/>
-        <targetInfos/>
-      </file>
-      <file attr="config" category="sourceC" name="example\ymodem\ymodem_receive.c" version="0.9.4">
-        <instance index="0" removed="1">RTE\BootServe\ymodem_receive.c</instance>
-        <component Cclass="BootServe" Cgroup="example" Csub="ymodem_receive" Cvendor="kk" Cversion="0.9.4" condition="ymodem"/>
-        <package name="wboot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/wboot/" vendor="kk" version="0.9.5-dev16+g41a3fb8"/>
-        <targetInfos/>
-      </file>
-      <file attr="config" category="header" name="example\ymodem\ymodem_receive.h" version="0.9.4">
-        <instance index="0" removed="1">RTE\BootServe\ymodem_receive.h</instance>
-        <component Cclass="BootServe" Cgroup="example" Csub="ymodem_receive" Cvendor="kk" Cversion="0.9.4" condition="ymodem"/>
-        <package name="wboot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/wboot/" vendor="kk" version="0.9.5-dev16+g41a3fb8"/>
-        <targetInfos/>
-      </file>
-      <file attr="config" category="sourceC" name="example\ymodem\ymodem_send.c" version="0.9.4">
-        <instance index="0" removed="1">RTE\BootServe\ymodem_send.c</instance>
-        <component Cclass="BootServe" Cgroup="example" Csub="ymodem_send" Cvendor="kk" Cversion="0.9.4" condition="ymodem"/>
-        <package name="wboot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/wboot/" vendor="kk" version="0.9.5-dev16+g41a3fb8"/>
-        <targetInfos/>
-      </file>
-      <file attr="config" category="header" name="example\ymodem\ymodem_send.h" version="0.9.4">
-        <instance index="0" removed="1">RTE\BootServe\ymodem_send.h</instance>
-        <component Cclass="BootServe" Cgroup="example" Csub="ymodem_send" Cvendor="kk" Cversion="0.9.4" condition="ymodem"/>
-        <package name="wboot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/wboot/" vendor="kk" version="0.9.5-dev16+g41a3fb8"/>
-        <targetInfos/>
-      </file>
-      <file attr="config" category="header" name="source\app_cfg.h" version="1.0.1">
-        <instance index="0" removed="1">RTE\FrameWork\app_cfg.h</instance>
-        <component Cclass="FrameWork" Cgroup="wali_framework" Cvendor="kk" Cversion="1.0.1"/>
-        <package name="wali_framework" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/WALI_FrameWork/" vendor="kk" version="1.0.1"/>
-        <targetInfos/>
-      </file>
-      <file attr="config" category="source" name="source\wl_serve.c" version="1.0.1">
-        <instance index="0" removed="1">RTE\FrameWork\wl_serve.c</instance>
-        <component Cclass="FrameWork" Cgroup="wali_framework" Cvendor="kk" Cversion="1.0.1"/>
-        <package name="wali_framework" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/WALI_FrameWork/" vendor="kk" version="1.0.1"/>
-        <targetInfos/>
+      <file attr="config" category="sourceC" name="template\no_semihosting.c" version="0.9.6">
+        <instance index="0">RTE\MicroBoot\no_semihosting.c</instance>
+        <component Cclass="MicroBoot" Cgroup="components" Csub="no_semihosting" Cvendor="kk" Cversion="0.9.6" condition="no_semihosting"/>
+        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.8-dev74+g4e63433"/>
+        <targetInfos>
+          <targetInfo name="STM32F7_BOOT"/>
+        </targetInfos>
       </file>
       <file attr="config" category="header" name="template\user_app_cfg.h" version="0.9.6">
         <instance index="0">RTE\MicroBoot\user_app_cfg.h</instance>
         <component Cclass="MicroBoot" Cgroup="components" Csub="ymodem" Cvendor="kk" Cversion="0.9.6" condition="ymodem"/>
         <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.8-dev74+g4e63433"/>
         <targetInfos>
-          <targetInfo name="H743_BOOT"/>
+          <targetInfo name="STM32F7_BOOT"/>
         </targetInfos>
       </file>
       <file attr="config" category="sourceC" name="example\ymodem\ymodem_ota.c" version="0.9.6">
@@ -763,7 +628,7 @@
         <component Cclass="MicroBoot" Cgroup="example" Csub="ymodem_ota" Cvendor="kk" Cversion="0.9.6" condition="ymodem_ota"/>
         <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.8-dev74+g4e63433"/>
         <targetInfos>
-          <targetInfo name="H743_BOOT"/>
+          <targetInfo name="STM32F7_BOOT"/>
         </targetInfos>
       </file>
       <file attr="config" category="header" name="example\ymodem\ymodem_ota.h" version="0.9.6">
@@ -771,31 +636,10 @@
         <component Cclass="MicroBoot" Cgroup="example" Csub="ymodem_ota" Cvendor="kk" Cversion="0.9.6" condition="ymodem_ota"/>
         <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.8-dev74+g4e63433"/>
         <targetInfos>
-          <targetInfo name="H743_BOOT"/>
+          <targetInfo name="STM32F7_BOOT"/>
         </targetInfos>
-      </file>
-      <file attr="config" category="source" name="bsp\_template\board.c" version="3.1.5">
-        <instance index="0" removed="1">RTE\RTOS\board.c</instance>
-        <component Cbundle="RT-Thread" Cclass="RTOS" Cgroup="kernel" Cvendor="RealThread" Cversion="3.1.5" condition="CMSIS Core with RTOS"/>
-        <package name="RT-Thread" schemaVersion="1.4" url="https://www.rt-thread.org/download/mdk/" vendor="RealThread" version="3.1.5"/>
-        <targetInfos/>
-      </file>
-      <file attr="config" category="header" name="bsp\_template\rtconfig.h" version="3.1.5">
-        <instance index="0" removed="1">RTE\RTOS\rtconfig.h</instance>
-        <component Cbundle="RT-Thread" Cclass="RTOS" Cgroup="kernel" Cvendor="RealThread" Cversion="3.1.5" condition="CMSIS Core with RTOS"/>
-        <package name="RT-Thread" schemaVersion="1.4" url="https://www.rt-thread.org/download/mdk/" vendor="RealThread" version="3.1.5"/>
-        <targetInfos/>
       </file>
     </files>
   </RTE>
-
-  <LayerInfo>
-    <Layers>
-      <Layer>
-        <LayName>H743_BOOT</LayName>
-        <LayPrjMark>1</LayPrjMark>
-      </Layer>
-    </Layers>
-  </LayerInfo>
 
 </Project>
