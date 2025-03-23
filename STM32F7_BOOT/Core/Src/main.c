@@ -78,6 +78,18 @@ int64_t get_system_time_ms(void)
 {
     return HAL_GetTick();
 }
+
+uint16_t shell_read_data(wl_shell_t *ptObj, char *pchBuffer, uint16_t hwSize)
+{
+    peek_byte_t *ptReadByte = get_read_byte_interface(&s_fsmCheckUsePeek);
+    return ptReadByte->fnGetByte(ptReadByte, (uint8_t *)pchBuffer, hwSize);
+}
+
+uint16_t shell_write_data(wl_shell_t *ptObj, const char *pchBuffer, uint16_t hwSize)
+{
+	return HAL_UART_Transmit(&huart1, (uint8_t *)pchBuffer, hwSize, 100);
+}
+
 /* USER CODE END 0 */
 
 /**
@@ -93,14 +105,6 @@ int main(void)
 
   /* MPU Configuration--------------------------------------------------------*/
   MPU_Config();
-
-  /* Enable the CPU Cache */
-
-  /* Enable I-Cache---------------------------------------------------------*/
-  SCB_EnableICache();
-
-  /* Enable D-Cache---------------------------------------------------------*/
-  SCB_EnableDCache();
 
   /* MCU Configuration--------------------------------------------------------*/
 
@@ -122,7 +126,20 @@ int main(void)
   MX_GPIO_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
+    queue_init(&s_tCheckUsePeekQueue, s_chBuffer, sizeof(s_chBuffer));
+    init_fsm(check_use_peek, &s_fsmCheckUsePeek, args(&s_tCheckUsePeekQueue));
+    shell_ops_t s_tOps = {
+        .fnReadData = shell_read_data,
+		.fnWriteData = shell_write_data,
+    };
+    shell_init(&s_tShellObj,&s_tOps);
+	agent_register(&s_fsmCheckUsePeek, &s_tShellObj.tCheckAgent);
+		
+    ymodem_ota_receive_init(&s_tYmodemOtaReceive, get_read_byte_interface(&s_fsmCheckUsePeek));
+    agent_register(&s_fsmCheckUsePeek, &s_tYmodemOtaReceive.tCheckAgent);
 
+    connect(&tUartMsgObj, SIGNAL(uart_sig), &s_tCheckUsePeekQueue, SLOT(enqueue_bytes));
+    connect(&s_tYmodemOtaReceive.tYmodemReceive, SIGNAL(ymodem_rec_sig), &huart1, SLOT(uart_sent_data));
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -132,10 +149,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	HAL_Delay(500);
-    HAL_GPIO_WritePin(GPIOH, GPIO_PIN_10, GPIO_PIN_SET);	
-	HAL_Delay(500);
-    HAL_GPIO_WritePin(GPIOH, GPIO_PIN_10, GPIO_PIN_RESET);	  
+    call_fsm( check_use_peek,  &s_fsmCheckUsePeek );	  
   }
   /* USER CODE END 3 */
 }

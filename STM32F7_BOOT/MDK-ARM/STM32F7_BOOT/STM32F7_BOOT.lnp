@@ -1,11 +1,11 @@
 --cpu Cortex-M7.fp.dp
 "stm32f7_boot\startup_stm32f767xx.o"
+"stm32f7_boot\stm32f7x_1024.flm.o"
 "stm32f7_boot\main.o"
 "stm32f7_boot\gpio.o"
 "stm32f7_boot\usart.o"
 "stm32f7_boot\stm32f7xx_it.o"
 "stm32f7_boot\stm32f7xx_hal_msp.o"
-"stm32f7_boot\stm32f7x_1024.flm.o"
 "stm32f7_boot\stm32f7xx_hal_cortex.o"
 "stm32f7_boot\stm32f7xx_hal_tim.o"
 "stm32f7_boot\stm32f7xx_hal_tim_ex.o"
@@ -25,6 +25,7 @@
 "stm32f7_boot\stm32f7xx_hal_i2c_ex.o"
 "stm32f7_boot\stm32f7xx_hal_exti.o"
 "stm32f7_boot\system_stm32f7xx.o"
+"stm32f7_boot\no_semihosting.o"
 "stm32f7_boot\ymodem_ota.o"
 "stm32f7_boot\intelhex.o"
 "stm32f7_boot\bootloader.o"
@@ -38,7 +39,6 @@
 "stm32f7_boot\ymodem.o"
 "stm32f7_boot\flash_algo.o"
 "stm32f7_boot\ring_queue.o"
-"stm32f7_boot\no_semihosting.o"
 --library_type=microlib --strict --scatter "STM32F7_BOOT\STM32F7_BOOT.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

@@ -29,19 +29,31 @@ extern "C" {
 #include "main.h"
 
 /* USER CODE BEGIN Includes */
-
+#include "signals_slots.h"
 /* USER CODE END Includes */
 
 extern UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN Private defines */
+typedef struct
+{
+    SIG_SLOT_OBJ;
+    uint8_t chByte;
+    uint16_t hwLen;
+}data_msg_t;
+extern data_msg_t  tUartMsgObj;
 
+signals(uart_sig,data_msg_t *ptThis,
+      args(              
+            uint8_t *pchByte,
+            uint16_t hwLen
+          ));
 /* USER CODE END Private defines */
 
 void MX_USART1_UART_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-
+void uart_sent_data(UART_HandleTypeDef *huart,uint8_t *chDate, uint16_t hwLen);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus
