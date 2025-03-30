@@ -5,6 +5,7 @@
 "stm32f103boot\usart.o"
 "stm32f103boot\stm32f1xx_it.o"
 "stm32f103boot\stm32f1xx_hal_msp.o"
+"stm32f103boot\led.o"
 "stm32f103boot\stm32f1xx_hal_gpio_ex.o"
 "stm32f103boot\stm32f1xx_hal_tim.o"
 "stm32f103boot\stm32f1xx_hal_tim_ex.o"

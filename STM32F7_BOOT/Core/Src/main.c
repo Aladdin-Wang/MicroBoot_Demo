@@ -139,10 +139,10 @@ int main(void)
 	agent_register(&s_fsmCheckUsePeek, &s_tShellObj.tCheckAgent);
 		
     ymodem_ota_receive_init(&s_tYmodemOtaReceive, get_read_byte_interface(&s_fsmCheckUsePeek));
-    agent_register(&s_fsmCheckUsePeek, &s_tYmodemOtaReceive.tCheckAgent);
+   // agent_register(&s_fsmCheckUsePeek, &s_tYmodemOtaReceive.tCheckAgent);
 
     connect(&tUartMsgObj, SIGNAL(uart_sig), &s_tCheckUsePeekQueue, SLOT(enqueue_bytes));
-    connect(&s_tYmodemOtaReceive.tYmodemReceive, SIGNAL(ymodem_rec_sig), &huart1, SLOT(uart_sent_data));
+    //connect(&s_tYmodemOtaReceive.tYmodemReceive, SIGNAL(ymodem_rec_sig), &huart1, SLOT(uart_sent_data));
 	
   /* USER CODE END 2 */
 

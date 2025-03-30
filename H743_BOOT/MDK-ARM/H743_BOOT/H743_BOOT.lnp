@@ -42,7 +42,7 @@
 "h743_boot\ymodem.o"
 "h743_boot\stm32_flash_dev.o"
 "h743_boot\stm32_flash_drv.o"
-"h743_boot\flash_blob.o"
+"h743_boot\flash_algo.o"
 "h743_boot\ring_queue.o"
 "h743_boot\ymodem_ota.o"
 --library_type=microlib --strict --scatter "H743_BOOT\H743_BOOT.sct"

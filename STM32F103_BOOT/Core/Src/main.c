@@ -27,6 +27,7 @@
 #include "ymodem_ota.h"
 #include "micro_shell.h"
 #include "SEGGER_RTT.h"
+#include "led.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -81,7 +82,7 @@ uint16_t shell_read_data(wl_shell_t *ptObj, char *pchBuffer, uint16_t hwSize)
 {
 //    peek_byte_t *ptReadByte = get_read_byte_interface(&s_fsmCheckUsePeek);
 //    return ptReadByte->fnGetByte(ptReadByte, (uint8_t *)pchBuffer, hwSize);
-		return SEGGER_RTT_Read(0,(uint8_t *)pchBuffer, hwSize);	
+	return SEGGER_RTT_Read(0,(uint8_t *)pchBuffer, hwSize);	
 }
 
 uint16_t shell_write_data(wl_shell_t *ptObj, const char *pchBuffer, uint16_t hwSize)
@@ -116,7 +117,7 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
+    SEGGER_RTT_Init();
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -125,12 +126,12 @@ int main(void)
   MX_USART3_UART_Init();
   MX_UART5_Init();
   /* USER CODE BEGIN 2 */
-    SEGGER_RTT_Init();
+
     queue_init(&s_tCheckUsePeekQueue, s_chBuffer, sizeof(s_chBuffer));
     init_fsm(check_use_peek, &s_fsmCheckUsePeek, args(&s_tCheckUsePeekQueue));
 
     ymodem_ota_receive_init(&s_tYmodemOtaReceive, get_read_byte_interface(&s_fsmCheckUsePeek));
-    agent_register(&s_fsmCheckUsePeek, &s_tYmodemOtaReceive.tCheckAgent);
+   // agent_register(&s_fsmCheckUsePeek, &s_tYmodemOtaReceive.tCheckAgent);
 
     shell_ops_t s_tOps = {
         .fnReadData = shell_read_data,
@@ -151,6 +152,8 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
         call_fsm( check_use_peek,  &s_fsmCheckUsePeek );
+	    breath_led();
+	    
   }
   /* USER CODE END 3 */
 }
@@ -197,7 +200,8 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 int stdout_putchar(int ch)
 {
-	HAL_UART_Transmit(&huart3, (uint8_t *)&ch, 1, 100);
+	//HAL_UART_Transmit(&huart3, (uint8_t *)&ch, 1, 100);
+    SEGGER_RTT_PutChar(0, (char)ch);
     return ch;
 }
 /* USER CODE END 4 */
