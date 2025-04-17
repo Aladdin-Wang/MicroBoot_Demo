@@ -13,4 +13,8 @@ LR_IROM1 0x08000000 0x00100000  {    ; load region size_region
    .ANY (+RW +ZI)
   }
 }
-
+LR_EROM1 0x90000000 0x01000000  {    ; load region size_region
+    ER_EROM1 0x90000000 0x01000000  {  ; load address = execution address
+		*.o (ExtFlashSection)
+	}
+}
