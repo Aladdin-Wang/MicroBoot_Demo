@@ -764,7 +764,7 @@
       <file attr="config" category="sourceC" name="template\no_semihosting.c" version="0.9.6">
         <instance index="0">RTE\MicroBoot\no_semihosting.c</instance>
         <component Cclass="MicroBoot" Cgroup="components" Csub="no_semihosting" Cvendor="kk" Cversion="0.9.6" condition="no_semihosting"/>
-        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.8-dev76+ge3aefad"/>
+        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.8-dev84+g6a4f0a5"/>
         <targetInfos>
           <targetInfo name="STM32F7_BOOT"/>
         </targetInfos>
@@ -772,7 +772,7 @@
       <file attr="config" category="header" name="template\user_app_cfg.h" version="0.9.6">
         <instance index="0">RTE\MicroBoot\user_app_cfg.h</instance>
         <component Cclass="MicroBoot" Cgroup="components" Csub="ymodem" Cvendor="kk" Cversion="0.9.6" condition="ymodem"/>
-        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.8-dev76+ge3aefad"/>
+        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.8-dev84+g6a4f0a5"/>
         <targetInfos>
           <targetInfo name="STM32F7_BOOT"/>
         </targetInfos>
@@ -780,7 +780,7 @@
       <file attr="config" category="sourceC" name="example\ymodem\ymodem_ota.c" version="0.9.6">
         <instance index="0">RTE\MicroBoot\ymodem_ota.c</instance>
         <component Cclass="MicroBoot" Cgroup="example" Csub="ymodem_ota" Cvendor="kk" Cversion="0.9.6" condition="ymodem_ota"/>
-        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.8-dev76+ge3aefad"/>
+        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.8-dev84+g6a4f0a5"/>
         <targetInfos>
           <targetInfo name="STM32F7_BOOT"/>
         </targetInfos>
@@ -788,7 +788,7 @@
       <file attr="config" category="header" name="example\ymodem\ymodem_ota.h" version="0.9.6">
         <instance index="0">RTE\MicroBoot\ymodem_ota.h</instance>
         <component Cclass="MicroBoot" Cgroup="example" Csub="ymodem_ota" Cvendor="kk" Cversion="0.9.6" condition="ymodem_ota"/>
-        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.8-dev76+ge3aefad"/>
+        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.8-dev84+g6a4f0a5"/>
         <targetInfos>
           <targetInfo name="STM32F7_BOOT"/>
         </targetInfos>
