@@ -1,0 +1,28 @@
+--cpu Cortex-M7.fp.dp
+"stm32h750_demo\startup_stm32h750xx.o"
+"stm32h750_demo\main.o"
+"stm32h750_demo\gpio.o"
+"stm32h750_demo\memorymap.o"
+"stm32h750_demo\stm32h7xx_it.o"
+"stm32h750_demo\stm32h7xx_hal_msp.o"
+"stm32h750_demo\stm32h7xx_hal_cortex.o"
+"stm32h750_demo\stm32h7xx_hal_rcc.o"
+"stm32h750_demo\stm32h7xx_hal_rcc_ex.o"
+"stm32h750_demo\stm32h7xx_hal_flash.o"
+"stm32h750_demo\stm32h7xx_hal_flash_ex.o"
+"stm32h750_demo\stm32h7xx_hal_gpio.o"
+"stm32h750_demo\stm32h7xx_hal_hsem.o"
+"stm32h750_demo\stm32h7xx_hal_dma.o"
+"stm32h750_demo\stm32h7xx_hal_dma_ex.o"
+"stm32h750_demo\stm32h7xx_hal_mdma.o"
+"stm32h750_demo\stm32h7xx_hal_pwr.o"
+"stm32h750_demo\stm32h7xx_hal_pwr_ex.o"
+"stm32h750_demo\stm32h7xx_hal.o"
+"stm32h750_demo\stm32h7xx_hal_i2c.o"
+"stm32h750_demo\stm32h7xx_hal_i2c_ex.o"
+"stm32h750_demo\stm32h7xx_hal_exti.o"
+"stm32h750_demo\system_stm32h7xx.o"
+--library_type=microlib --strict --scatter "STM32H750_DEMO\STM32H750_DEMO.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "STM32H750_DEMO.map" -o STM32H750_DEMO\STM32H750_DEMO.axf
