@@ -83,21 +83,25 @@ int64_t get_system_time_ms(void)
 
 uint16_t shell_read_data(wl_shell_t *ptObj, char *pchBuffer, uint16_t hwSize)
 {
-//    peek_byte_t *ptReadByte = get_read_byte_interface(&s_fsmCheckUsePeek);
-//    return ptReadByte->fnGetByte(ptReadByte, (uint8_t *)pchBuffer, hwSize);
-	return SEGGER_RTT_Read(0,(uint8_t *)pchBuffer, hwSize);	
+    peek_byte_t *ptReadByte = get_read_byte_interface(&s_fsmCheckUsePeek);
+    return ptReadByte->fnGetByte(ptReadByte, (uint8_t *)pchBuffer, hwSize);
+	//return SEGGER_RTT_Read(0,(uint8_t *)pchBuffer, hwSize);	
 }
 
 uint16_t shell_write_data(wl_shell_t *ptObj, const char *pchBuffer, uint16_t hwSize)
 {
-	//return HAL_UART_Transmit(&huart1, (uint8_t *)pchBuffer, hwSize, 100);
-	return SEGGER_RTT_Write(0, pchBuffer,hwSize);
+	return HAL_UART_Transmit(&huart1, (uint8_t *)pchBuffer, hwSize, 100);
+	//return SEGGER_RTT_Write(0, pchBuffer,hwSize);
 }
 
-#define TRANSFER_SIZE (8 * 1024U)
+#define TRANSFER_SIZE (1024U)
 uint8_t wbuff[TRANSFER_SIZE];
 uint8_t rbuff[TRANSFER_SIZE];
-
+__attribute__((aligned(32)))
+__USED const unsigned char a2 [] __attribute__ ((section("ExtFlashSection")))= 
+{
+    0x00, 0x11, 0x33, 0x44, 0x55, 0x66, 0x77, 0x00, 0x99, 0x22, 0x11, 0x33, 0x44, 0x55, 0x66, 0x77, 0x13, 0x99, 0x00, 0xff, 0xff, 0x04, 0x00, 0xff, 0x00, 0x00, 0x00, 0xff, 0x00, 0x00, 0x00, 0xff, 0x00, 0x00, 0x00, 0xff, 0x00, 0x00, 0x00, 0xff, 0x00, 0x00, 0x00, 0xff, 0x00, 0x00, 0x00, 0xff, 0x00, 0x00, 0x00, 0xff, 0x00, 0x00, 0x00, 0xff, 0x00, 0x00, 0x00, 0xff,
+};
 
 /* USER CODE END 0 */
 
@@ -126,7 +130,7 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
+int ret;
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -134,7 +138,7 @@ int main(void)
   MX_USART1_UART_Init();
   MX_QUADSPI_Init();
   /* USER CODE BEGIN 2 */
-    SEGGER_RTT_Init();
+    //SEGGER_RTT_Init();
     queue_init(&s_tCheckUsePeekQueue, s_chBuffer, sizeof(s_chBuffer));
     init_fsm(check_use_peek, &s_fsmCheckUsePeek, args(&s_tCheckUsePeekQueue));
     shell_ops_t s_tOps = {
@@ -145,7 +149,7 @@ int main(void)
 	agent_register(&s_fsmCheckUsePeek, &s_tShellObj.tCheckAgent);
 		
     ymodem_ota_receive_init(&s_tYmodemOtaReceive, get_read_byte_interface(&s_fsmCheckUsePeek));
-   // agent_register(&s_fsmCheckUsePeek, &s_tYmodemOtaReceive.tCheckAgent);
+    agent_register(&s_fsmCheckUsePeek, &s_tYmodemOtaReceive.tCheckAgent);
 
     connect(&tUartMsgObj, SIGNAL(uart_sig), &s_tCheckUsePeekQueue, SLOT(enqueue_bytes));
     connect(&s_tYmodemOtaReceive.tYmodemReceive, SIGNAL(ymodem_rec_sig), &huart1, SLOT(uart_sent_data));
@@ -154,7 +158,7 @@ int main(void)
     spi_host.iomode = CHRY_SFLASH_IOMODE_QUAD;
 	chry_sflash_init(&spi_host);
     chry_sflash_norflash_init(&flash, &spi_host);
-    int ret = chry_sflash_norflash_erase(&flash, 0, TRANSFER_SIZE);
+    ret = chry_sflash_norflash_erase(&flash, 0, TRANSFER_SIZE);
     memset(rbuff, 0, sizeof(rbuff));
     for (uint32_t i = 0; i < sizeof(wbuff); i++) {
         wbuff[i] = i % 0xFF;
@@ -167,7 +171,10 @@ int main(void)
     ret = chry_sflash_norflash_read(&flash, 0, rbuff, TRANSFER_SIZE);	
     elapsed = (get_system_time_ms() - now);	
     read_speed = (double)TRANSFER_SIZE / elapsed;	
-    printf("write_speed:%.2f KB/s, read_speed:%.2f KB/s\n", write_speed, read_speed);	
+	for(uint8_t i = 0; i< 8;i++){
+		printf ("rbuff[%d] = 0x%x  ",i,rbuff[i]);
+	}
+    printf("\r\nwrite_speed:%.2f KB/s, read_speed:%.2f KB/s\n", write_speed, read_speed);	
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -238,8 +245,8 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 int stdout_putchar(int ch)
 {
-    //HAL_UART_Transmit(&huart6, (uint8_t *)&ch, 1, 100);
-	SEGGER_RTT_PutChar(0, (char)ch);
+    HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 100);
+	//SEGGER_RTT_PutChar(0, (char)ch);
     return ch;
 }
 /* USER CODE END 4 */

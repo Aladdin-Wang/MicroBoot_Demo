@@ -635,21 +635,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>RTT</GroupName>
-          <Files>
-            <File>
-              <FileName>SEGGER_RTT.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\RTT\SEGGER_RTT.c</FilePath>
-            </File>
-            <File>
-              <FileName>SEGGER_RTT_printf.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\RTT\SEGGER_RTT_printf.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>CherrySF</GroupName>
           <Files>
             <File>
@@ -724,7 +709,7 @@
         </targetInfos>
       </component>
       <component Cclass="MicroBoot" Cgroup="components" Csub="no_semihosting" Cvendor="kk" Cversion="0.9.6" condition="no_semihosting">
-        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.8-dev74+g4e63433"/>
+        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.8-dev76+ge3aefad"/>
         <targetInfos>
           <targetInfo name="STM32F7_BOOT"/>
         </targetInfos>
@@ -736,7 +721,7 @@
         </targetInfos>
       </component>
       <component Cclass="MicroBoot" Cgroup="components" Csub="shell" Cvendor="kk" Cversion="0.9.7" condition="shell">
-        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.8-dev56+gb078887"/>
+        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="0.9.8-dev84+g6a4f0a5"/>
         <targetInfos>
           <targetInfo name="STM32F7_BOOT"/>
         </targetInfos>
