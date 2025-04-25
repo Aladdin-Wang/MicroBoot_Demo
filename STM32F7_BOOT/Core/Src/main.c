@@ -83,15 +83,15 @@ int64_t get_system_time_ms(void)
 
 uint16_t shell_read_data(wl_shell_t *ptObj, char *pchBuffer, uint16_t hwSize)
 {
-    peek_byte_t *ptReadByte = get_read_byte_interface(&s_fsmCheckUsePeek);
-    return ptReadByte->fnGetByte(ptReadByte, (uint8_t *)pchBuffer, hwSize);
-	//return SEGGER_RTT_Read(0,(uint8_t *)pchBuffer, hwSize);	
+    //peek_byte_t *ptReadByte = get_read_byte_interface(&s_fsmCheckUsePeek);
+    //return ptReadByte->fnGetByte(ptReadByte, (uint8_t *)pchBuffer, hwSize);
+	return SEGGER_RTT_Read(0,(uint8_t *)pchBuffer, hwSize);	
 }
 
 uint16_t shell_write_data(wl_shell_t *ptObj, const char *pchBuffer, uint16_t hwSize)
 {
-	return HAL_UART_Transmit(&huart1, (uint8_t *)pchBuffer, hwSize, 100);
-	//return SEGGER_RTT_Write(0, pchBuffer,hwSize);
+	//return HAL_UART_Transmit(&huart1, (uint8_t *)pchBuffer, hwSize, 100);
+	return SEGGER_RTT_Write(0, pchBuffer,hwSize);
 }
 
 #define TRANSFER_SIZE (1024U)
@@ -130,7 +130,7 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-int ret;
+  int ret;
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -245,8 +245,8 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 int stdout_putchar(int ch)
 {
-    HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 100);
-	//SEGGER_RTT_PutChar(0, (char)ch);
+   // HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 100);
+	SEGGER_RTT_PutChar(0, (char)ch);
     return ch;
 }
 /* USER CODE END 4 */
