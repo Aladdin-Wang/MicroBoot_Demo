@@ -120,7 +120,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>CMSIS_AGDI</Key>
-          <Name>-X"MicroKeenV4 CMSIS-DAP" -U56ED3E798E545592 -O206 -S8 -C0 -P00000000 -N00("ARM CoreSight SW-DP") -D00(1BA01477) -L00(0) -TO65554 -TC10000000 -TT10000000 -TP20 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO31 -FD20000000 -FC1000 -FN1 -FF0STM32F10x_512.FLM -FS08000000 -FL080000 -FP0($$Device:STM32F103RC$Flash\STM32F10x_512.FLM)</Name>
+          <Name>-X"MicroLink CMSIS-DAP" -UF84F8C4892F4EF02 -O206 -S8 -C0 -P00000000 -N00("ARM CoreSight SW-DP") -D00(1BA01477) -L00(0) -TO65554 -TC10000000 -TT10000000 -TP20 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO31 -FD20000000 -FC1000 -FN1 -FF0STM32F10x_512.FLM -FS08000000 -FL080000 -FP0($$Device:STM32F103RC$Flash\STM32F10x_512.FLM)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -180,16 +180,16 @@
           <Type>0</Type>
           <LineNumber>131</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134236426</Address>
+          <Address>0</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
+          <BreakIfRCount>0</BreakIfRCount>
           <Filename>../Core/Src/main.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\stm32f103boot\../Core/Src/main.c\131</Expression>
+          <Expression></Expression>
         </Bp>
         <Bp>
           <Number>2</Number>
@@ -203,7 +203,7 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>D:/Users/akqbd/AppData/Local/Arm/Packs/kk/MicroBoot/1.0.1-dev8/source/bootloader/bootloader.c</Filename>
+          <Filename>D:\Users\akqbd\AppData\Local\Arm\Packs\kk\MicroBoot\1.0.1-dev8\source\bootloader\bootloader.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\stm32f103boot\bootloader.c\283</Expression>
         </Bp>
@@ -251,7 +251,7 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>0</BreakIfRCount>
-          <Filename>D:/Users/akqbd/AppData/Local/Arm/Packs/kk/MicroBoot/1.0.1-dev8/source/bootloader/bootloader.c</Filename>
+          <Filename>D:\Users\akqbd\AppData\Local\Arm\Packs\kk\MicroBoot\1.0.1-dev8\source\bootloader\bootloader.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression></Expression>
         </Bp>

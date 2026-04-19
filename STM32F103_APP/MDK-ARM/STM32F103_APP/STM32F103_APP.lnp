@@ -29,6 +29,8 @@
 "stm32f103_app\list.o"
 "stm32f103_app\ring_queue.o"
 "stm32f103_app\multiple_delay.o"
+"stm32f103_app\signals_slots.o"
+"stm32f103_app\subscribe_publish.o"
 --library_type=microlib --strict --scatter "STM32F103_APP\STM32F103_APP.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

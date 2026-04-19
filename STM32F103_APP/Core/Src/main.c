@@ -26,6 +26,7 @@
 #include "SEGGER_RTT.h"
 #include "multiple_delay.h"
 #include "micro_shell.h"
+#include "subscribe_publish.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -57,36 +58,31 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-__attribute__((aligned(32)))
-uint8_t s_chBuffer[2048] ;
-static byte_queue_t                  s_tCheckUsePeekQueue;
-static fsm_check_use_peek_t          s_fsmCheckUsePeek;
-static check_shell_t                 s_tShellObj;
+static micro_shell_t                 s_tShellObj;
+static subscribe_publish_t           s_tSubPub;
+
+def_topic(&s_tSubPub, string_test_topic, char*);
 
 multiple_delay_t tDelayService;
 static uint8_t s_chDelayPool[10 * sizeof(multiple_delay_item_t)];
 
 typedef struct {
 	multiple_delay_item_t *ptDelayItem;
-    char ch;
     uint32_t delay_tick;
     multiple_delay_request_priority_t priority;
 } delay_task_param_t;
 
 static delay_task_param_t s_tHighTask = {
-    .ch = 'H',
     .delay_tick = 1000,
     .priority = MULTIPLE_DELAY_HIGH_PRIORITY,
 };
 
 static delay_task_param_t s_tNormalTask = {
-    .ch = 'N',
     .delay_tick = 2000,
     .priority = MULTIPLE_DELAY_NORMAL_PRIORITY,
 };
 
-static delay_task_param_t s_tLowTask = {
-    .ch = 'L',
+static delay_task_param_t s_tLowTask = {	
     .delay_tick = 3000,
     .priority = MULTIPLE_DELAY_LOW_PRIORITY,
 };
@@ -96,7 +92,8 @@ void on_delay_task_high(multiple_delay_report_status_t status, void *pTag)
     delay_task_param_t *ptTask = (delay_task_param_t *)pTag;
 
     if (status == MULTIPLE_DELAY_TIMEOUT) {
-        printf("%c", ptTask->ch);
+		
+        publish(&s_tSubPub, __MSG_TOPIC(string_test_topic), (char *)"high"); 
 
         ptTask->ptDelayItem = MULTIPLE_DELAY.RequestDelay(
             &tDelayService,
@@ -113,7 +110,7 @@ void on_delay_task_normal(multiple_delay_report_status_t status, void *pTag)
     delay_task_param_t *ptTask = (delay_task_param_t *)pTag;
 
     if (status == MULTIPLE_DELAY_TIMEOUT) {
-        printf("%c", ptTask->ch);
+        printf("normal\r\n");
 
         ptTask->ptDelayItem = MULTIPLE_DELAY.RequestDelay(
             &tDelayService,
@@ -130,7 +127,7 @@ void on_delay_task_low(multiple_delay_report_status_t status, void *pTag)
     delay_task_param_t *ptTask = (delay_task_param_t *)pTag;
 
     if (status == MULTIPLE_DELAY_TIMEOUT) {
-        printf("%c", ptTask->ch);
+        printf("low\r\n");
 
         ptTask->ptDelayItem = MULTIPLE_DELAY.RequestDelay(
             &tDelayService,
@@ -142,13 +139,18 @@ void on_delay_task_low(multiple_delay_report_status_t status, void *pTag)
     }
 }
 
+void task_high_task(delay_task_param_t *ptTask, char *chDate)
+{
+    printf("%s\r\n",chDate);
+}
 
-uint16_t shell_read_data(wl_shell_t *ptObj, char *pchBuffer, uint16_t hwSize)
+
+uint16_t shell_read_data(micro_shell_t *ptObj, char *pchBuffer, uint16_t hwSize)
 {
     return SEGGER_RTT_Read(0, (uint8_t *)pchBuffer, hwSize);	
 }
 
-uint16_t shell_write_data(wl_shell_t *ptObj, const char *pchBuffer, uint16_t hwSize)
+uint16_t shell_write_data(micro_shell_t *ptObj, const char *pchBuffer, uint16_t hwSize)
 {
 	return SEGGER_RTT_Write(0, (uint8_t *)pchBuffer, hwSize);	
 }
@@ -181,7 +183,6 @@ int cancel(int argc, char **argv)
 }
 MSH_CMD_EXPORT(cancel,eg:cancel high/normal/low)
 
-
 /* USER CODE END 0 */
 
 /**
@@ -192,7 +193,7 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-
+  
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -201,9 +202,8 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-	#define APP_BASE_ADDR  0x08005000
 
-	SCB->VTOR = APP_BASE_ADDR;
+	SCB->VTOR = APP_PART_ADDR;
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -217,21 +217,17 @@ int main(void)
   /* Initialize all configured peripherals */
     MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-    queue_init(&s_tCheckUsePeekQueue, s_chBuffer, sizeof(s_chBuffer));
-    init_fsm(check_use_peek, &s_fsmCheckUsePeek, args(&s_tCheckUsePeekQueue));
 
     shell_ops_t s_tOps = {
         .fnReadData = shell_read_data,
 		.fnWriteData = shell_write_data,
     };
     shell_init(&s_tShellObj,&s_tOps);
-	agent_register(&s_fsmCheckUsePeek, &s_tShellObj.tCheckAgent); 
   
     multiple_delay_cfg_t cfg = {
         .pchBuffer = s_chDelayPool,
         .nSize = sizeof(s_chDelayPool),
     };
-
     MULTIPLE_DELAY.Init(&tDelayService, &cfg);
 
     s_tHighTask.ptDelayItem = MULTIPLE_DELAY.RequestDelay(
@@ -257,7 +253,10 @@ int main(void)
         &s_tLowTask,
         on_delay_task_low
     );  
-  
+ 
+    subscribe_publish_init(&s_tSubPub);
+    subscribe(&s_tSubPub, __MSG_TOPIC(string_test_topic), &s_tHighTask, task_high_task);
+	
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -267,8 +266,9 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  check_use_peek_task(&s_fsmCheckUsePeek );
-	  MULTIPLE_DELAY.Task(&tDelayService);
+	  micro_shell_exec(&s_tShellObj );
+      subscribe_publish_exec(&s_tSubPub);
+	  MULTIPLE_DELAY.Task(&tDelayService); 	  
   }
   /* USER CODE END 3 */
 }

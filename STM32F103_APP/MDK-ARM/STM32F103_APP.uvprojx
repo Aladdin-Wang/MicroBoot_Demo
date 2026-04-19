@@ -81,9 +81,9 @@
             <nStopB2X>0</nStopB2X>
           </BeforeMake>
           <AfterMake>
-            <RunUserProg1>0</RunUserProg1>
-            <RunUserProg2>1</RunUserProg2>
-            <UserProg1Name></UserProg1Name>
+            <RunUserProg1>1</RunUserProg1>
+            <RunUserProg2>0</RunUserProg2>
+            <UserProg1Name>fromelf --bin !L --output app.bin</UserProg1Name>
             <UserProg2Name></UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
             <UserProg2Dos16Mode>0</UserProg2Dos16Mode>
@@ -554,20 +554,32 @@
           <targetInfo name="STM32F103_APP"/>
         </targetInfos>
       </component>
+      <component Cclass="MicroBoot" Cgroup="components" Csub="signals_slots" Cvendor="kk" Cversion="1.0.0" condition="signals_slots" ymlID="MicroBoot:components:signals_slots">
+        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="1.0.1-dev10+g2e2e04e"/>
+        <targetInfos>
+          <targetInfo name="STM32F103_APP"/>
+        </targetInfos>
+      </component>
+      <component Cclass="MicroBoot" Cgroup="components" Csub="subscribe_publish" Cvendor="kk" Cversion="1.0.0" condition="subscribe_publish" ymlID="MicroBoot:components:subscribe_publish">
+        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="1.0.1-dev10+g2e2e04e"/>
+        <targetInfos>
+          <targetInfo name="STM32F103_APP"/>
+        </targetInfos>
+      </component>
     </components>
     <files>
       <file attr="config" category="header" name="template\atom_code_port.h" version="1.0.0">
         <instance index="0">RTE\MicroBoot\atom_code_port.h</instance>
         <component Cclass="MicroBoot" Cgroup="components" Csub="queue" Cvendor="kk" Cversion="1.0.0" condition="queue"/>
-        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="1.0.1-dev8+gf3aea51"/>
+        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="1.0.1-dev10+g2e2e04e"/>
         <targetInfos>
           <targetInfo name="STM32F103_APP"/>
         </targetInfos>
       </file>
       <file attr="config" category="header" name="template\user_app_cfg.h" version="1.0.0">
         <instance index="0">RTE\MicroBoot\user_app_cfg.h</instance>
-        <component Cclass="MicroBoot" Cgroup="components" Csub="shell" Cvendor="kk" Cversion="1.0.0" condition="shell"/>
-        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="1.0.1-dev8+gf3aea51"/>
+        <component Cclass="MicroBoot" Cgroup="components" Csub="subscribe_publish" Cvendor="kk" Cversion="1.0.0" condition="subscribe_publish"/>
+        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="1.0.1-dev10+g2e2e04e"/>
         <targetInfos>
           <targetInfo name="STM32F103_APP"/>
         </targetInfos>

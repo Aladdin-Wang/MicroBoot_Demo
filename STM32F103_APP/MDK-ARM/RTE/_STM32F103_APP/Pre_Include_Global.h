@@ -17,6 +17,10 @@
 #define __USER_APP_CFG_H__ "user_app_cfg.h"
 /* kk::MicroBoot:components:shell@1.0.0 */
 #define __USER_APP_CFG_H__ "user_app_cfg.h"
+/* kk::MicroBoot:components:signals_slots@1.0.0 */
+#define __USER_APP_CFG_H__ "user_app_cfg.h"
+/* kk::MicroBoot:components:subscribe_publish@1.0.0 */
+#define __USER_APP_CFG_H__ "user_app_cfg.h"
 
 
 #endif /* PRE_INCLUDE_GLOBAL_H */

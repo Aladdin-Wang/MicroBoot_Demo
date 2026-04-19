@@ -64,8 +64,8 @@ uint8_t s_chBuffer[2048] ;
 static byte_queue_t                  s_tCheckUsePeekQueue;
 static fsm_check_use_peek_t          s_fsmCheckUsePeek;
 static ymodem_ota_recive_t           s_tYmodemOtaReceive;
-static check_shell_t                 s_tShellObj;
-multiple_delay_t tDelayService;
+static check_agent_shell_t           s_tShellObj;
+multiple_delay_t                     tDelayService;
 static uint8_t s_chDelayPool[10 * sizeof(multiple_delay_item_t)];
 static multiple_delay_item_t *s_ptDelayBootItem = NULL;
 
@@ -88,13 +88,13 @@ int64_t get_system_time_ms(void)
     return HAL_GetTick();
 }
 
-uint16_t shell_read_data(wl_shell_t *ptObj, char *pchBuffer, uint16_t hwSize)
+uint16_t shell_read_data(micro_shell_t *ptObj, char *pchBuffer, uint16_t hwSize)
 {
     peek_byte_t *ptReadByte = get_read_byte_interface(&s_fsmCheckUsePeek);
     return ptReadByte->fnGetByte(ptReadByte, (uint8_t *)pchBuffer, hwSize);	
 }
 
-uint16_t shell_write_data(wl_shell_t *ptObj, const char *pchBuffer, uint16_t hwSize)
+uint16_t shell_write_data(micro_shell_t *ptObj, const char *pchBuffer, uint16_t hwSize)
 {
     HAL_GPIO_WritePin(EN_485_GPIO_Port, EN_485_Pin, GPIO_PIN_SET);	
 	HAL_UART_Transmit(&huart1, (uint8_t *)pchBuffer, hwSize, 100);	
@@ -102,7 +102,7 @@ uint16_t shell_write_data(wl_shell_t *ptObj, const char *pchBuffer, uint16_t hwS
 	return hwSize;
 }
 
-NOINIT ALIGN(8)
+NOINIT
 static uint32_t s_wEnterBootMagic;
 
 bool user_enter_bootloader(void)
@@ -125,7 +125,6 @@ MSH_CMD_EXPORT(boot, enterboot)
 void on_delay_event(multiple_delay_report_status_t status, void *pTag)
 {
     user_magic_data_t *ptMagicData = (user_magic_data_t *)pTag;
-
     if (status == MULTIPLE_DELAY_TIMEOUT) {
         reboot();
     }
@@ -177,7 +176,7 @@ int main(void)
         .fnReadData = shell_read_data,
 		.fnWriteData = shell_write_data,
     };
-    shell_init(&s_tShellObj,&s_tOps);
+    shell_agent_init(&s_tShellObj,&s_tOps);
 	agent_register(&s_fsmCheckUsePeek, &s_tShellObj.tCheckAgent);
 
     multiple_delay_cfg_t cfg = {
@@ -185,6 +184,7 @@ int main(void)
         .nSize = sizeof(s_chDelayPool),
     };
     MULTIPLE_DELAY.Init(&tDelayService, &cfg);
+	
     s_ptDelayBootItem = MULTIPLE_DELAY.RequestDelay(
         &tDelayService,
         1000,
@@ -248,20 +248,6 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* USER CODE END 4 */

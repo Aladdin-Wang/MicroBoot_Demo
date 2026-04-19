@@ -132,8 +132,10 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 
 void uart_sent_data(UART_HandleTypeDef *huart, uint8_t *chDate, uint16_t hwLen)
 {
-    if(huart == &huart1) {		
+    if(huart == &huart1) {	
+        HAL_GPIO_WritePin(EN_485_GPIO_Port, EN_485_Pin, GPIO_PIN_SET);			
         HAL_UART_Transmit(&huart1, chDate, hwLen, 100);
+	    HAL_GPIO_WritePin(EN_485_GPIO_Port, EN_485_Pin, GPIO_PIN_RESET);		
     }		
 }
 
