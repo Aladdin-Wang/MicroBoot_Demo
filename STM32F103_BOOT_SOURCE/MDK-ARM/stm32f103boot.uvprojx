@@ -7,7 +7,7 @@
 
   <Targets>
     <Target>
-      <TargetName>STM32F103_APP</TargetName>
+      <TargetName>stm32f103boot</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <pArmCC>6240000::V6.24::ARMCLANG</pArmCC>
@@ -49,8 +49,8 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>STM32F103_APP\</OutputDirectory>
-          <OutputName>STM32F103_APP</OutputName>
+          <OutputDirectory>stm32f103boot\</OutputDirectory>
+          <OutputName>stm32f103boot</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -81,9 +81,9 @@
             <nStopB2X>0</nStopB2X>
           </BeforeMake>
           <AfterMake>
-            <RunUserProg1>1</RunUserProg1>
-            <RunUserProg2>0</RunUserProg2>
-            <UserProg1Name>fromelf --bin !L --output app.bin</UserProg1Name>
+            <RunUserProg1>0</RunUserProg1>
+            <RunUserProg2>1</RunUserProg2>
+            <UserProg1Name></UserProg1Name>
             <UserProg2Name></UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
             <UserProg2Dos16Mode>0</UserProg2Dos16Mode>
@@ -139,7 +139,7 @@
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2V8M.DLL</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -277,7 +277,7 @@
               </OCR_RVCT3>
               <OCR_RVCT4>
                 <Type>1</Type>
-                <StartAddress>0x8005000</StartAddress>
+                <StartAddress>0x8000000</StartAddress>
                 <Size>0x40000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
@@ -339,9 +339,9 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>USE_HAL_DRIVER,STM32F103xE</Define>
+              <Define>USE_HAL_DRIVER,STM32F103xE,STM32F10x_512</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;..\RTT</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -363,7 +363,7 @@
             </VariousControls>
           </Aads>
           <LDads>
-            <umfTarg>1</umfTarg>
+            <umfTarg>0</umfTarg>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
             <noStLib>0</noStLib>
@@ -372,7 +372,7 @@
             <TextAddressRange></TextAddressRange>
             <DataAddressRange></DataAddressRange>
             <pXoBase></pXoBase>
-            <ScatterFile></ScatterFile>
+            <ScatterFile>..\user_stm32f103boot.sct</ScatterFile>
             <IncludeLibs></IncludeLibs>
             <IncludeLibsPath></IncludeLibsPath>
             <Misc></Misc>
@@ -406,6 +406,62 @@
               <FilePath>../Core/Src/gpio.c</FilePath>
             </File>
             <File>
+              <FileName>usart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../Core/Src/usart.c</FilePath>
+              <FileOption>
+                <CommonProperty>
+                  <UseCPPCompiler>2</UseCPPCompiler>
+                  <RVCTCodeConst>0</RVCTCodeConst>
+                  <RVCTZI>0</RVCTZI>
+                  <RVCTOtherData>0</RVCTOtherData>
+                  <ModuleSelection>0</ModuleSelection>
+                  <IncludeInBuild>1</IncludeInBuild>
+                  <AlwaysBuild>2</AlwaysBuild>
+                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
+                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
+                  <PublicsOnly>2</PublicsOnly>
+                  <StopOnExitCode>11</StopOnExitCode>
+                  <CustomArgument></CustomArgument>
+                  <IncludeLibraryModules></IncludeLibraryModules>
+                  <ComprImg>1</ComprImg>
+                </CommonProperty>
+                <FileArmAds>
+                  <Cads>
+                    <interw>2</interw>
+                    <Optim>0</Optim>
+                    <oTime>2</oTime>
+                    <SplitLS>2</SplitLS>
+                    <OneElfS>2</OneElfS>
+                    <Strict>2</Strict>
+                    <EnumInt>2</EnumInt>
+                    <PlainCh>2</PlainCh>
+                    <Ropi>2</Ropi>
+                    <Rwpi>2</Rwpi>
+                    <wLevel>0</wLevel>
+                    <uThumb>2</uThumb>
+                    <uSurpInc>2</uSurpInc>
+                    <uC99>2</uC99>
+                    <uGnu>2</uGnu>
+                    <useXO>2</useXO>
+                    <v6Lang>0</v6Lang>
+                    <v6LangP>0</v6LangP>
+                    <vShortEn>2</vShortEn>
+                    <vShortWch>2</vShortWch>
+                    <v6Lto>2</v6Lto>
+                    <v6WtE>2</v6WtE>
+                    <v6Rtti>2</v6Rtti>
+                    <VariousControls>
+                      <MiscControls></MiscControls>
+                      <Define></Define>
+                      <Undefine></Undefine>
+                      <IncludePath></IncludePath>
+                    </VariousControls>
+                  </Cads>
+                </FileArmAds>
+              </FileOption>
+            </File>
+            <File>
               <FileName>stm32f1xx_it.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Core/Src/stm32f1xx_it.c</FilePath>
@@ -424,6 +480,62 @@
               <FileName>stm32f1xx_hal_gpio_ex.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f1xx_hal_uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c</FilePath>
+              <FileOption>
+                <CommonProperty>
+                  <UseCPPCompiler>2</UseCPPCompiler>
+                  <RVCTCodeConst>0</RVCTCodeConst>
+                  <RVCTZI>0</RVCTZI>
+                  <RVCTOtherData>0</RVCTOtherData>
+                  <ModuleSelection>0</ModuleSelection>
+                  <IncludeInBuild>1</IncludeInBuild>
+                  <AlwaysBuild>2</AlwaysBuild>
+                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
+                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
+                  <PublicsOnly>2</PublicsOnly>
+                  <StopOnExitCode>11</StopOnExitCode>
+                  <CustomArgument></CustomArgument>
+                  <IncludeLibraryModules></IncludeLibraryModules>
+                  <ComprImg>1</ComprImg>
+                </CommonProperty>
+                <FileArmAds>
+                  <Cads>
+                    <interw>2</interw>
+                    <Optim>0</Optim>
+                    <oTime>2</oTime>
+                    <SplitLS>2</SplitLS>
+                    <OneElfS>2</OneElfS>
+                    <Strict>2</Strict>
+                    <EnumInt>2</EnumInt>
+                    <PlainCh>2</PlainCh>
+                    <Ropi>2</Ropi>
+                    <Rwpi>2</Rwpi>
+                    <wLevel>0</wLevel>
+                    <uThumb>2</uThumb>
+                    <uSurpInc>2</uSurpInc>
+                    <uC99>2</uC99>
+                    <uGnu>2</uGnu>
+                    <useXO>2</useXO>
+                    <v6Lang>0</v6Lang>
+                    <v6LangP>0</v6LangP>
+                    <vShortEn>2</vShortEn>
+                    <vShortWch>2</vShortWch>
+                    <v6Lto>2</v6Lto>
+                    <v6WtE>2</v6WtE>
+                    <v6Rtti>2</v6Rtti>
+                    <VariousControls>
+                      <MiscControls></MiscControls>
+                      <Define></Define>
+                      <Undefine></Undefine>
+                      <IncludePath></IncludePath>
+                    </VariousControls>
+                  </Cads>
+                </FileArmAds>
+              </FileOption>
             </File>
             <File>
               <FileName>stm32f1xx_hal.c</FileName>
@@ -488,28 +600,10 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>RTT</GroupName>
-          <Files>
-            <File>
-              <FileName>SEGGER_RTT.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\RTT\SEGGER_RTT.c</FilePath>
-            </File>
-            <File>
-              <FileName>SEGGER_RTT_printf.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\RTT\SEGGER_RTT_printf.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>::CMSIS</GroupName>
         </Group>
         <Group>
           <GroupName>::Compiler</GroupName>
-        </Group>
-        <Group>
-          <GroupName>::MicroBoot</GroupName>
         </Group>
       </Groups>
     </Target>
@@ -521,68 +615,118 @@
       <component Cclass="CMSIS" Cgroup="CORE" Cvendor="ARM" Cversion="6.1.1" condition="ARMv6_7_8-M Device" ymlID="CMSIS:CORE">
         <package name="CMSIS" schemaVersion="1.7.40" url="https://www.keil.com/pack/" vendor="ARM" version="6.2.0"/>
         <targetInfos>
-          <targetInfo name="STM32F103_APP"/>
+          <targetInfo name="stm32f103boot"/>
         </targetInfos>
       </component>
       <component Cbundle="ARM Compiler" Cclass="Compiler" Cgroup="I/O" Csub="STDOUT" Cvariant="User" Cvendor="Keil" Cversion="1.2.0" condition="ARMCC Cortex-M" ymlID="Compiler&amp;ARM Compiler:I/O:STDOUT&amp;User">
         <package name="ARM_Compiler" schemaVersion="1.7.7" url="https://www.keil.com/pack/" vendor="Keil" version="1.7.2"/>
         <targetInfos>
-          <targetInfo name="STM32F103_APP"/>
-        </targetInfos>
-      </component>
-      <component Cclass="MicroBoot" Cgroup="components" Csub="check_agent_engine" Cvendor="kk" Cversion="1.0.0" condition="check_agent_engine" ymlID="MicroBoot:components:check_agent_engine">
-        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="1.0.1-dev8+gf3aea51"/>
-        <targetInfos>
-          <targetInfo name="STM32F103_APP"/>
-        </targetInfos>
-      </component>
-      <component Cclass="MicroBoot" Cgroup="components" Csub="multiple_delay" Cvendor="kk" Cversion="1.0.0" condition="multiple_delay" ymlID="MicroBoot:components:multiple_delay">
-        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="1.0.1-dev8+gf3aea51"/>
-        <targetInfos>
-          <targetInfo name="STM32F103_APP"/>
-        </targetInfos>
-      </component>
-      <component Cclass="MicroBoot" Cgroup="components" Csub="queue" Cvendor="kk" Cversion="1.0.0" condition="queue" ymlID="MicroBoot:components:queue">
-        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="1.0.1-dev8+gf3aea51"/>
-        <targetInfos>
-          <targetInfo name="STM32F103_APP"/>
-        </targetInfos>
-      </component>
-      <component Cclass="MicroBoot" Cgroup="components" Csub="shell" Cvendor="kk" Cversion="1.0.0" condition="shell" ymlID="MicroBoot:components:shell">
-        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="1.0.1-dev8+gf3aea51"/>
-        <targetInfos>
-          <targetInfo name="STM32F103_APP"/>
-        </targetInfos>
-      </component>
-      <component Cclass="MicroBoot" Cgroup="components" Csub="signals_slots" Cvendor="kk" Cversion="1.0.0" condition="signals_slots" ymlID="MicroBoot:components:signals_slots">
-        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="1.0.1-dev10+g2e2e04e"/>
-        <targetInfos>
-          <targetInfo name="STM32F103_APP"/>
-        </targetInfos>
-      </component>
-      <component Cclass="MicroBoot" Cgroup="components" Csub="subscribe_publish" Cvendor="kk" Cversion="1.0.0" condition="subscribe_publish" ymlID="MicroBoot:components:subscribe_publish">
-        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="1.0.1-dev10+g2e2e04e"/>
-        <targetInfos>
-          <targetInfo name="STM32F103_APP"/>
+          <targetInfo name="stm32f103boot"/>
         </targetInfos>
       </component>
     </components>
     <files>
+      <file attr="config" category="source" name="source\wl_serve.c" version="0.9.1">
+        <instance index="0" removed="1">RTE\Boot\wl_serve.c</instance>
+        <component Cclass="Boot" Cgroup="wboot" Csub="Core" Cvendor="kk" Cversion="0.9.1"/>
+        <package name="wboot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/wboot/" vendor="kk" version="0.9.1"/>
+        <targetInfos/>
+      </file>
+      <file attr="config" category="header" name="source\wl_serve.h" version="0.9.1">
+        <instance index="0" removed="1">RTE\Boot\wl_serve.h</instance>
+        <component Cclass="Boot" Cgroup="wboot" Csub="Core" Cvendor="kk" Cversion="0.9.1"/>
+        <package name="wboot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/wboot/" vendor="kk" version="0.9.1"/>
+        <targetInfos/>
+      </file>
+      <file attr="config" category="header" name="template\wl_user_app_cfg.h" version="0.9.1">
+        <instance index="0" removed="1">RTE\Boot\wl_user_app_cfg.h</instance>
+        <component Cclass="Boot" Cgroup="wboot" Csub="Core" Cvendor="kk" Cversion="0.9.1"/>
+        <package name="wboot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/wboot/" vendor="kk" version="0.9.1"/>
+        <targetInfos/>
+      </file>
+      <file attr="config" category="source" name="source\wl_serve.c" version="0.9.2">
+        <instance index="0" removed="1">RTE\BootServe\wl_serve.c</instance>
+        <component Cclass="BootServe" Cgroup="wboot" Csub="Core" Cvendor="kk" Cversion="0.9.2"/>
+        <package name="wboot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/wboot/" vendor="kk" version="0.9.2"/>
+        <targetInfos/>
+      </file>
+      <file attr="config" category="header" name="source\wl_serve.h" version="0.9.2">
+        <instance index="0" removed="1">RTE\BootServe\wl_serve.h</instance>
+        <component Cclass="BootServe" Cgroup="wboot" Csub="Core" Cvendor="kk" Cversion="0.9.2"/>
+        <package name="wboot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/wboot/" vendor="kk" version="0.9.2"/>
+        <targetInfos/>
+      </file>
+      <file attr="config" category="header" name="template\wl_user_app_cfg.h" version="0.9.4">
+        <instance index="0" removed="1">RTE\BootServe\wl_user_app_cfg.h</instance>
+        <component Cclass="BootServe" Cgroup="components" Csub="ymodem" Cvendor="kk" Cversion="0.9.4" condition="ymodem"/>
+        <package name="wboot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/wboot/" vendor="kk" version="0.9.5-dev23+gecb056d"/>
+        <targetInfos/>
+      </file>
+      <file attr="config" category="sourceC" name="example\ymodem\ymodem_ota.c" version="0.9.4">
+        <instance index="0" removed="1">RTE\BootServe\ymodem_ota.c</instance>
+        <component Cclass="BootServe" Cgroup="example" Csub="ymodem_ota" Cvendor="kk" Cversion="0.9.4" condition="ymodem_ota"/>
+        <package name="wboot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/wboot/" vendor="kk" version="0.9.5-dev23+gecb056d"/>
+        <targetInfos/>
+      </file>
+      <file attr="config" category="header" name="example\ymodem\ymodem_ota.h" version="0.9.4">
+        <instance index="0" removed="1">RTE\BootServe\ymodem_ota.h</instance>
+        <component Cclass="BootServe" Cgroup="example" Csub="ymodem_ota" Cvendor="kk" Cversion="0.9.4" condition="ymodem_ota"/>
+        <package name="wboot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/wboot/" vendor="kk" version="0.9.5-dev23+gecb056d"/>
+        <targetInfos/>
+      </file>
+      <file attr="config" category="source" name="source\wl_serve.c" version="0.9.0">
+        <instance index="0" removed="1">RTE\FrameWork\wl_serve.c</instance>
+        <component Cclass="FrameWork" Cgroup="wali_framework" Csub="Core" Cvendor="kk" Cversion="0.9.1"/>
+        <package name="wali_framework" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/WALI_FrameWork/" vendor="kk" version="0.9.1"/>
+        <targetInfos/>
+      </file>
+      <file attr="config" category="header" name="source\wl_serve.h" version="0.9.0">
+        <instance index="0" removed="1">RTE\FrameWork\wl_serve.h</instance>
+        <component Cclass="FrameWork" Cgroup="wali_framework" Csub="Core" Cvendor="kk" Cversion="0.9.1"/>
+        <package name="wali_framework" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/WALI_FrameWork/" vendor="kk" version="0.9.1"/>
+        <targetInfos/>
+      </file>
+      <file attr="config" category="header" name="template\wl_user_app_cfg.h" version="0.9.0">
+        <instance index="0" removed="1">RTE\FrameWork\wl_user_app_cfg.h</instance>
+        <component Cclass="FrameWork" Cgroup="wali_framework" Csub="Core" Cvendor="kk" Cversion="0.9.1"/>
+        <package name="wali_framework" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/WALI_FrameWork/" vendor="kk" version="0.9.1"/>
+        <targetInfos/>
+      </file>
       <file attr="config" category="header" name="template\atom_code_port.h" version="1.0.0">
-        <instance index="0">RTE\MicroBoot\atom_code_port.h</instance>
+        <instance index="0" removed="1">RTE\MicroBoot\atom_code_port.h</instance>
         <component Cclass="MicroBoot" Cgroup="components" Csub="queue" Cvendor="kk" Cversion="1.0.0" condition="queue"/>
         <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="1.1.0"/>
-        <targetInfos>
-          <targetInfo name="STM32F103_APP"/>
-        </targetInfos>
+        <targetInfos/>
+      </file>
+      <file attr="config" category="header" name="template\flash_port_user.h" version="1.0.0">
+        <instance index="0" removed="1">RTE\MicroBoot\flash_port_user.h</instance>
+        <component Cclass="MicroBoot" Cgroup="components" Csub="FlashDrv" Cvariant="STM32" Cvendor="kk" Cversion="1.0.0" condition="FlashDrv"/>
+        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="1.1.0"/>
+        <targetInfos/>
+      </file>
+      <file attr="config" category="sourceC" name="template\no_semihosting.c" version="1.0.0">
+        <instance index="0" removed="1">RTE\MicroBoot\no_semihosting.c</instance>
+        <component Cclass="MicroBoot" Cgroup="components" Csub="no_semihosting" Cvendor="kk" Cversion="1.0.0" condition="no_semihosting"/>
+        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="1.0.1-dev6+gbf4b2b4"/>
+        <targetInfos/>
       </file>
       <file attr="config" category="header" name="template\user_app_cfg.h" version="1.0.0">
-        <instance index="0">RTE\MicroBoot\user_app_cfg.h</instance>
-        <component Cclass="MicroBoot" Cgroup="components" Csub="subscribe_publish" Cvendor="kk" Cversion="1.0.0" condition="subscribe_publish"/>
+        <instance index="0" removed="1">RTE\MicroBoot\user_app_cfg.h</instance>
+        <component Cclass="MicroBoot" Cgroup="components" Csub="ymodem" Cvendor="kk" Cversion="1.0.0" condition="ymodem"/>
         <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="1.1.0"/>
-        <targetInfos>
-          <targetInfo name="STM32F103_APP"/>
-        </targetInfos>
+        <targetInfos/>
+      </file>
+      <file attr="config" category="sourceC" name="example\ymodem\ymodem_ota.c" version="1.0.0">
+        <instance index="0" removed="1">RTE\MicroBoot\ymodem_ota.c</instance>
+        <component Cclass="MicroBoot" Cgroup="example" Csub="ymodem_ota" Cvendor="kk" Cversion="1.0.0" condition="ymodem_ota"/>
+        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="1.1.0"/>
+        <targetInfos/>
+      </file>
+      <file attr="config" category="header" name="example\ymodem\ymodem_ota.h" version="1.0.0">
+        <instance index="0" removed="1">RTE\MicroBoot\ymodem_ota.h</instance>
+        <component Cclass="MicroBoot" Cgroup="example" Csub="ymodem_ota" Cvendor="kk" Cversion="1.0.0" condition="ymodem_ota"/>
+        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="1.1.0"/>
+        <targetInfos/>
       </file>
     </files>
   </RTE>
@@ -590,7 +734,7 @@
   <LayerInfo>
     <Layers>
       <Layer>
-        <LayName>STM32F103_APP</LayName>
+        <LayName>stm32f103boot</LayName>
         <LayPrjMark>1</LayPrjMark>
       </Layer>
     </Layers>

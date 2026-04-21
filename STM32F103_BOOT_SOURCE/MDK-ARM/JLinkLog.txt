@@ -1,0 +1,79 @@
+T70E4 000:200.865   SEGGER J-Link V8.16 Log File
+T70E4 000:201.019   DLL Compiled: Feb 26 2025 12:07:26
+T70E4 000:201.027   Logging started @ 2025-11-04 03:08
+T70E4 000:201.035   Process: D:\Users\akqbd\AppData\Local\Keil_v5\UV4\UV4.exe
+T70E4 000:201.047 - 201.043ms 
+T70E4 000:201.059 JLINK_SetWarnOutHandler(...)
+T70E4 000:201.066 - 0.009ms 
+T70E4 000:201.076 JLINK_OpenEx(...)
+T70E4 000:204.821   Firmware: J-Link V12 compiled Feb 20 2025 16:24:27
+T70E4 000:206.826   Firmware: J-Link V12 compiled Feb 20 2025 16:24:27
+T70E4 000:228.889   Hardware: V12.00
+T70E4 000:228.926   S/N: 601012352
+T70E4 000:228.943   OEM: SEGGER
+T70E4 000:228.961   Feature(s): RDI, FlashBP, FlashDL, JFlash, GDB
+T70E4 000:231.316   Bootloader: (FW returned invalid version)
+T70E4 000:232.533   USB speed mode: High speed (480 MBit/s)
+T70E4 000:232.549   Active J-Link Eco level: 3 (https://wiki.segger.com/J-Link_Eco)
+T70E4 000:233.226   TELNET listener socket opened on port 19021
+T70E4 000:233.302   WEBSRV WEBSRV_Init(): Starting webserver thread(s)
+T70E4 000:233.515   WEBSRV Webserver running on local port 19080
+T70E4 000:233.761   Looking for J-Link GUI Server exe at: D:\Users\akqbd\AppData\Local\Keil_v5\ARM\Segger\JLinkGUIServer.exe
+T70E4 000:233.952   Looking for J-Link GUI Server exe at: C:\Program Files\SEGGER\JLink_V844a\JLinkGUIServer.exe
+T70E4 000:233.994   Forking J-Link GUI Server: C:\Program Files\SEGGER\JLink_V844a\JLinkGUIServer.exe
+T70E4 000:456.088   J-Link GUI Server info: "J-Link GUI server V8.44a "
+T70E4 000:464.163 - 263.082ms returns "O.K."
+T70E4 000:464.195 JLINK_GetEmuCaps()
+T70E4 000:464.209 - 0.012ms returns 0xB9FF7BBF
+T70E4 000:464.225 JLINK_TIF_GetAvailable(...)
+T70E4 000:464.909 - 0.685ms 
+T70E4 000:464.927 JLINK_SetErrorOutHandler(...)
+T70E4 000:464.934 - 0.007ms 
+T70E4 000:464.952 JLINK_ExecCommand("ProjectFile = "E:\software\MicroBoot_Demo\STM32F103_BOOT\MDK-ARM\JLinkSettings.ini"", ...). 
+T70E4 000:472.272   Ref file found at: D:\Users\akqbd\AppData\Local\Keil_v5\ARM\Segger\JLinkDevices.ref
+T70E4 000:472.336   REF file references invalid XML file: C:\Program Files\SEGGER\JLink_V844a\JLinkDevices.xml
+T70E4 000:473.057 - 8.105ms returns 0x00
+T70E4 000:473.096 JLINK_ExecCommand("Device = STM32F103RC", ...). 
+T70E4 000:473.287   Device "STM32F103RC" selected.
+T70E4 000:473.574 - 0.464ms returns 0x00
+T70E4 000:473.585 JLINK_ExecCommand("DisableConnectionTimeout", ...). 
+T70E4 000:473.597   ERROR: Unknown command
+T70E4 000:473.608 - 0.013ms returns 0x01
+T70E4 000:473.616 JLINK_GetHardwareVersion()
+T70E4 000:473.624 - 0.007ms returns 120000
+T70E4 000:473.632 JLINK_GetDLLVersion()
+T70E4 000:473.639 - 0.007ms returns 81600
+T70E4 000:473.647 JLINK_GetOEMString(...)
+T70E4 000:473.655 JLINK_GetFirmwareString(...)
+T70E4 000:473.663 - 0.007ms 
+T70E4 000:473.673 JLINK_GetDLLVersion()
+T70E4 000:473.680 - 0.007ms returns 81600
+T70E4 000:473.688 JLINK_GetCompileDateTime()
+T70E4 000:473.695 - 0.007ms 
+T70E4 000:473.704 JLINK_GetFirmwareString(...)
+T70E4 000:473.711 - 0.007ms 
+T70E4 000:473.719 JLINK_GetHardwareVersion()
+T70E4 000:473.726 - 0.007ms returns 120000
+T70E4 000:473.735 JLINK_GetSN()
+T70E4 000:473.743 - 0.007ms returns 601012352
+T70E4 000:473.751 JLINK_GetOEMString(...)
+T70E4 000:473.763 JLINK_TIF_Select(JLINKARM_TIF_SWD)
+T70E4 000:476.206 - 2.443ms returns 0x00
+T70E4 000:476.231 JLINK_HasError()
+T70E4 000:476.251 JLINK_SetSpeed(5000)
+T70E4 000:476.831 - 0.581ms 
+T70E4 000:477.298 JLINK_HasError()
+T70E4 000:477.322 JLINK_SetResetType(JLINKARM_RESET_TYPE_NORMAL)
+T70E4 000:477.335 - 0.012ms returns JLINKARM_RESET_TYPE_NORMAL
+T70E4 000:477.347 JLINK_Reset()
+T70E4 000:478.004 - 0.656ms 
+T70E4 000:478.020 JLINK_GetId()
+T70E4 000:478.636 - 0.615ms returns 0x00000000
+T70E4 000:478.654 JLINK_GetId()
+T70E4 000:479.257 - 0.601ms returns 0x00000000
+T70E4 000:485.478 JLINK_GetFirmwareString(...)
+T70E4 000:485.507 - 0.029ms 
+T70E4 003:497.632 JLINK_Close()
+T70E4 003:503.688 - 6.055ms
+T70E4 003:503.727   
+T70E4 003:503.741   Closed
