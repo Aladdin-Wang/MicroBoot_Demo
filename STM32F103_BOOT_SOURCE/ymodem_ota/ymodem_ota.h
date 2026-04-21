@@ -1,7 +1,6 @@
 #ifndef APPLICATIONS_CHECK_AGENT_YMODEM_RECEIVE_H_
 #define APPLICATIONS_CHECK_AGENT_YMODEM_RECEIVE_H_
 #include "microboot.h"
-
 typedef struct ymodem_receive_t {
     ymodem_t      parent;
     peek_byte_t   *ptReadByte;

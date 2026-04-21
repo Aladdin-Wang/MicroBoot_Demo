@@ -23,10 +23,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "check_agent_engine.h"
 #include "ymodem_ota.h"
-#include "micro_shell.h"
-#include "multiple_delay.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -76,13 +73,6 @@ int reboot(void)
 }
 MSH_CMD_EXPORT(reboot, reboot)
 
-void ymodem_state_handler(ymodem_state_t state)
-{
-    if(state == STATE_FINSH){
-		reboot();
-	}
-}
-
 int64_t get_system_time_ms(void)
 {
     return HAL_GetTick();
@@ -102,35 +92,81 @@ uint16_t shell_write_data(micro_shell_t *ptObj, const char *pchBuffer, uint16_t 
 	return hwSize;
 }
 
-NOINIT
-static uint32_t s_wEnterBootMagic;
-#define DELAY_REBOOT_FLAG 0X55555555
-bool user_enter_bootloader(void)
+void ymodem_state_handler(ymodem_state_t state)
 {
-    if(s_wEnterBootMagic  != DELAY_REBOOT_FLAG){
-		s_wEnterBootMagic = DELAY_REBOOT_FLAG;
-        return true;	
+    if(state == STATE_FINSH){
+		reboot();
 	}
-    return false;
 }
 
+/* 
+ * @brief  Boot control flag stored in NOINIT section.
+ *         This variable is preserved across reset and used to control
+ *         whether the system should jump to APP after reboot.
+ */
+NOINIT
+static volatile uint32_t s_wEnterAppFlag;
+#define ENTER_APP_FLAG   0x55555555 /* Magic value indicating that APP entry is allowed */
+
+/*
+ * @brief  Check if entering APP is allowed.
+ * @retval true  APP can be entered
+ * @retval false Stay in bootloader
+ */
+bool can_enter_app(void)
+{
+    return (s_wEnterAppFlag == ENTER_APP_FLAG);
+}
+
+/*
+ * @brief  Enable APP entry.
+ *         This sets the flag so that after reboot the system jumps to APP.
+ */
+void enable_enter_app(void)
+{
+    s_wEnterAppFlag = ENTER_APP_FLAG;
+}
+
+/*
+ * @brief  Decide whether to stay in bootloader.
+ * @retval true  Stay in bootloader
+ * @retval false Jump to APP
+ */
+bool user_enter_bootloader(void)
+{
+    return !can_enter_app();
+}
+
+/*
+ * @brief  Delay timer callback.
+ *         If timeout occurs and APP entry is not yet enabled,
+ *         enable it and reboot to enter APP.
+ *
+ * @param  status Timer status
+ * @param  pTag   User context (unused)
+ */
 void on_delay_event(multiple_delay_report_status_t status, void *pTag)
 {
     user_magic_data_t *ptMagicData = (user_magic_data_t *)pTag;
     if (status == MULTIPLE_DELAY_TIMEOUT) {
-		if(s_wEnterBootMagic == DELAY_REBOOT_FLAG){
-            reboot();
+		if(!can_enter_app()){
+		    enable_enter_app();
+            reboot();/* Reboot to apply APP entry */
 		}
     }
 }
 
+/*
+ * @brief  Shell command: enter APP immediately.
+ *         Cancel delay and allow APP entry.
+ */
 int boot(void)
-{
+{	
+	enable_enter_app();
     MULTIPLE_DELAY.Cancel(&tDelayService,s_ptDelayBootItem);
     return 0;
 }
-MSH_CMD_EXPORT(boot, enterboot)
-
+MSH_CMD_EXPORT(boot, enter bootloader)
 
 /* USER CODE END 0 */
 
@@ -193,8 +229,7 @@ int main(void)
         MULTIPLE_DELAY_NORMAL_PRIORITY,
         &tUserMagicData,
         on_delay_event
-    );
-    printf("hello microboot\n");  	
+    );	
   /* USER CODE END 2 */
 
   /* Infinite loop */

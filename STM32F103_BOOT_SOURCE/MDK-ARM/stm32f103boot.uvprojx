@@ -341,7 +341,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xE,STM32F10x_512</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;..\..\MicroBootRom\source;..\ymodem_ota</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -471,6 +471,11 @@
               <FileType>1</FileType>
               <FilePath>../Core/Src/stm32f1xx_hal_msp.c</FilePath>
             </File>
+            <File>
+              <FileName>user_app_cfg.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Core\Inc\user_app_cfg.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -596,6 +601,106 @@
               <FileName>system_stm32f1xx.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Core/Src/system_stm32f1xx.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>MicroBoot</GroupName>
+          <Files>
+            <File>
+              <FileName>bootloader.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\MicroBootRom\source\bootloader\bootloader.c</FilePath>
+            </File>
+            <File>
+              <FileName>check_agent_engine.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\MicroBootRom\source\check_agent_engine\check_agent_engine.c</FilePath>
+            </File>
+            <File>
+              <FileName>msg_check_arg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\MicroBootRom\source\communication\msg_map\msg_check_arg.c</FilePath>
+            </File>
+            <File>
+              <FileName>msg_check_str.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\MicroBootRom\source\communication\msg_map\msg_check_str.c</FilePath>
+            </File>
+            <File>
+              <FileName>msg_map.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\MicroBootRom\source\communication\msg_map\msg_map.c</FilePath>
+            </File>
+            <File>
+              <FileName>signals_slots.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\MicroBootRom\source\communication\signals_slots\signals_slots.c</FilePath>
+            </File>
+            <File>
+              <FileName>subscribe_publish.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\MicroBootRom\source\communication\subscribe_publish\subscribe_publish.c</FilePath>
+            </File>
+            <File>
+              <FileName>ymodem.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\MicroBootRom\source\communication\ymodem\ymodem.c</FilePath>
+            </File>
+            <File>
+              <FileName>flash_algo.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\MicroBootRom\source\flash_algo\flash_algo.c</FilePath>
+            </File>
+            <File>
+              <FileName>STM32_FLASH_DEV.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\MicroBootRom\source\flash_algo\flash\STM32_FLASH_DEV.c</FilePath>
+            </File>
+            <File>
+              <FileName>STM32_FLASH_DRV.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\MicroBootRom\source\flash_algo\flash\STM32_FLASH_DRV.c</FilePath>
+            </File>
+            <File>
+              <FileName>epool.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\MicroBootRom\source\generic\epool\epool.c</FilePath>
+            </File>
+            <File>
+              <FileName>list.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\MicroBootRom\source\generic\list\list.c</FilePath>
+            </File>
+            <File>
+              <FileName>ring_queue.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\MicroBootRom\source\generic\queue\ring_queue.c</FilePath>
+            </File>
+            <File>
+              <FileName>multiple_delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\MicroBootRom\source\generic\timer\multiple_delay.c</FilePath>
+            </File>
+            <File>
+              <FileName>micro_shell.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\MicroBootRom\source\communication\shell\micro_shell.c</FilePath>
+            </File>
+            <File>
+              <FileName>micro_shell_cmd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\MicroBootRom\source\communication\shell\micro_shell_cmd.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>ymodem_ota</GroupName>
+          <Files>
+            <File>
+              <FileName>ymodem_ota.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ymodem_ota\ymodem_ota.c</FilePath>
             </File>
           </Files>
         </Group>

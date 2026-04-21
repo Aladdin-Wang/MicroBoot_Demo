@@ -1,0 +1,3 @@
+[submodule "MicroBootRom"]
+	path = MicroBootRom
+	url = https://github.com/Aladdin-Wang/MicroBootRom.git

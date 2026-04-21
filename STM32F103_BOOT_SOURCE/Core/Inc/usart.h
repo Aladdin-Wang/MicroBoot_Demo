@@ -29,7 +29,7 @@ extern "C" {
 #include "main.h"
 
 /* USER CODE BEGIN Includes */
-#include "signals_slots.h"
+#include "microboot.h"
 /* USER CODE END Includes */
 
 extern UART_HandleTypeDef huart1;
