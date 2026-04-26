@@ -758,7 +758,7 @@
       <file attr="config" category="header" name="template\atom_code_port.h" version="1.0.0">
         <instance index="0">RTE\MicroBoot\atom_code_port.h</instance>
         <component Cclass="MicroBoot" Cgroup="components" Csub="queue" Cvendor="kk" Cversion="1.0.0" condition="queue"/>
-        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="1.1.1-dev4+g8b430d9"/>
+        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="1.1.1-dev6+g3bd40cd"/>
         <targetInfos>
           <targetInfo name="stm32f103boot"/>
         </targetInfos>
@@ -766,7 +766,7 @@
       <file attr="config" category="header" name="template\flash_port_user.h" version="1.0.0">
         <instance index="0">RTE\MicroBoot\flash_port_user.h</instance>
         <component Cclass="MicroBoot" Cgroup="components" Csub="FlashDrv" Cvariant="STM32" Cvendor="kk" Cversion="1.0.0" condition="FlashDrv"/>
-        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="1.1.1-dev4+g8b430d9"/>
+        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="1.1.1-dev6+g3bd40cd"/>
         <targetInfos>
           <targetInfo name="stm32f103boot"/>
         </targetInfos>
@@ -780,7 +780,7 @@
       <file attr="config" category="header" name="template\user_app_cfg.h" version="1.0.0">
         <instance index="0">RTE\MicroBoot\user_app_cfg.h</instance>
         <component Cclass="MicroBoot" Cgroup="components" Csub="ymodem" Cvendor="kk" Cversion="1.0.0" condition="ymodem"/>
-        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="1.1.1-dev4+g8b430d9"/>
+        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="1.1.1-dev6+g3bd40cd"/>
         <targetInfos>
           <targetInfo name="stm32f103boot"/>
         </targetInfos>
@@ -788,7 +788,7 @@
       <file attr="config" category="sourceC" name="example\ymodem\ymodem_ota.c" version="1.0.0">
         <instance index="0">RTE\MicroBoot\ymodem_ota.c</instance>
         <component Cclass="MicroBoot" Cgroup="example" Csub="ymodem_ota" Cvendor="kk" Cversion="1.0.0" condition="ymodem_ota"/>
-        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="1.1.1-dev4+g8b430d9"/>
+        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="1.1.1-dev6+g3bd40cd"/>
         <targetInfos>
           <targetInfo name="stm32f103boot"/>
         </targetInfos>
@@ -796,7 +796,7 @@
       <file attr="config" category="header" name="example\ymodem\ymodem_ota.h" version="1.0.0">
         <instance index="0">RTE\MicroBoot\ymodem_ota.h</instance>
         <component Cclass="MicroBoot" Cgroup="example" Csub="ymodem_ota" Cvendor="kk" Cversion="1.0.0" condition="ymodem_ota"/>
-        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="1.1.1-dev4+g8b430d9"/>
+        <package name="MicroBoot" schemaVersion="1.7.28" url="https://github.com/Aladdin-Wang/MicroBoot/" vendor="kk" version="1.1.1-dev6+g3bd40cd"/>
         <targetInfos>
           <targetInfo name="stm32f103boot"/>
         </targetInfos>

@@ -15,11 +15,11 @@
 #define __USER_APP_CFG_H__ "user_app_cfg.h"
 /* kk::MicroBoot:components:queue@1.0.0 */
 #define __USER_APP_CFG_H__ "user_app_cfg.h"
-/* kk::MicroBoot:components:shell@1.0.0 */
+/* kk::MicroBoot:components:shell@1.1.0 */
 #define __USER_APP_CFG_H__ "user_app_cfg.h"
 /* kk::MicroBoot:components:signals_slots@1.1.0 */
 #define __USER_APP_CFG_H__ "user_app_cfg.h"
-/* kk::MicroBoot:components:subscribe_publish@1.0.0 */
+/* kk::MicroBoot:components:subscribe_publish@1.1.0 */
 #define __USER_APP_CFG_H__ "user_app_cfg.h"
 
 

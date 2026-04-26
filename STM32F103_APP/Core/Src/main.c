@@ -18,12 +18,12 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "stdio.h"
-#include "SEGGER_RTT.h"
 #include "multiple_delay.h"
 #include "micro_shell.h"
 #include "subscribe_publish.h"
@@ -60,7 +60,8 @@ void SystemClock_Config(void);
 /* USER CODE BEGIN 0 */
 static micro_shell_t                 s_tShellObj;
 static subscribe_publish_t           s_tSubPub;
-
+uint8_t s_chBuffer[1024] ;
+static byte_queue_t                  s_tUartQueue;
 def_topic(&s_tSubPub, string_test_topic, char*);
 
 multiple_delay_t tDelayService;
@@ -147,18 +148,13 @@ void task_high_task(delay_task_param_t *ptTask, char *chDate)
 
 uint16_t shell_read_data(micro_shell_t *ptObj, char *pchBuffer, uint16_t hwSize)
 {
-    return SEGGER_RTT_Read(0, (uint8_t *)pchBuffer, hwSize);	
+    return dequeue_bytes(&s_tUartQueue, (uint8_t *)pchBuffer, hwSize);	
 }
 
 uint16_t shell_write_data(micro_shell_t *ptObj, const char *pchBuffer, uint16_t hwSize)
 {
-	return SEGGER_RTT_Write(0, (uint8_t *)pchBuffer, hwSize);	
-}
-
-int stdout_putchar (int ch)
-{
-	SEGGER_RTT_PutChar(0,(char)ch);
-	return ch;
+    uart_sent_data(&huart1, (uint8_t *)pchBuffer, hwSize);	
+	return hwSize;
 }
 
 int reboot(void)
@@ -208,14 +204,15 @@ int main(void)
 
   /* Configure the system clock */
   SystemClock_Config();
+
   /* USER CODE BEGIN SysInit */
-    SEGGER_RTT_Init();
-	SEGGER_RTT_SetFlagsUpBuffer(0,SEGGER_RTT_MODE_BLOCK_IF_FIFO_FULL);
-	SEGGER_RTT_SetFlagsDownBuffer(0,SEGGER_RTT_MODE_BLOCK_IF_FIFO_FULL);	
+	queue_init(&s_tUartQueue, s_chBuffer, sizeof(s_chBuffer));
+	connect(&tUartMsgObj, SIGNAL(uart_sig), &s_tUartQueue, SLOT(enqueue_bytes));
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
-    MX_GPIO_Init();
+  MX_GPIO_Init();
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 
     shell_ops_t s_tOps = {

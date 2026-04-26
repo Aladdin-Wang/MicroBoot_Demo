@@ -92,12 +92,6 @@ uint16_t shell_write_data(micro_shell_t *ptObj, const char *pchBuffer, uint16_t 
 	return hwSize;
 }
 
-void ymodem_state_handler(ymodem_state_t state)
-{
-    if(state == STATE_FINSH){
-		reboot();
-	}
-}
 
 /* 
  * @brief  Boot control flag stored in NOINIT section.
@@ -154,6 +148,7 @@ void on_delay_event(multiple_delay_report_status_t status, void *pTag)
             reboot();/* Reboot to apply APP entry */
 		}
     }
+	s_ptDelayBootItem = NULL;
 }
 
 /*
@@ -163,10 +158,21 @@ void on_delay_event(multiple_delay_report_status_t status, void *pTag)
 int boot(void)
 {	
 	enable_enter_app();
-    MULTIPLE_DELAY.Cancel(&tDelayService,s_ptDelayBootItem);
+	if(s_ptDelayBootItem != NULL){
+        MULTIPLE_DELAY.Cancel(&tDelayService,s_ptDelayBootItem);
+	}
     return 0;
 }
 MSH_CMD_EXPORT(boot, enter bootloader)
+
+void ymodem_state_handler(ymodem_state_t state)
+{
+    if(state == STATE_FINSH){
+		enable_enter_app();
+		reboot();
+	}
+}
+
 
 /* USER CODE END 0 */
 
